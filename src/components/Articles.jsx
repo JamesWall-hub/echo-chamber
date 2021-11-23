@@ -56,7 +56,6 @@ const Articles = () => {
     }; 
 
     const handleChangeLimit = (event) => {
-        setSelectedPage(1)
         setSelectedLimit(event.target.value)
     };
 
@@ -68,7 +67,7 @@ const Articles = () => {
 
     const handlePrevPage = () => {
         setSelectedPage((prev) => {
-            return prev > 1 ? prev-=1 : null
+            return prev > 1 ? prev-=1 : 1
         });
     };
 
@@ -114,8 +113,11 @@ const Articles = () => {
                     <option value='100'>100</option>
                 </select>
                 {/* review conditional button rendering */}
-                {selectedPage === 1 && selectedArticles.length === selectedLimit ?
-                <button onClick={handleNextPage}>Next Page</button> 
+
+                {selectedPage === 1 && selectedArticles.length === selectedLimit ? 
+                <>
+                <button onClick={handleNextPage}>Next Page</button>
+                </> 
                 : null}
 
                 {selectedPage > 1 && selectedArticles.length === selectedLimit ? 
@@ -125,12 +127,16 @@ const Articles = () => {
                 </> 
                 : null}
 
-                {selectedPage > 1 && selectedArticles.length < selectedLimit ?
-                <button onClick={handlePrevPage}>Previous page</button>
+                {selectedPage > 1 && selectedArticles.length < selectedLimit ? 
+                <>
+                <button onClick={handlePrevPage}>Previous Page</button>
+                </> 
                 : null}
-                {selectedPage === 1 && selectedArticles.length < selectedLimit ?
-                null
-                : null}
+
+                
+
+                
+                
 
             {isLoading ? <p>Loading...</p> : null}
             <ul className="ArticleList" style={{listStyleType: "none"}}>
