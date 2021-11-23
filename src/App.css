@@ -32,3 +32,7 @@ body {
   border: solid rgb(0, 153, 255) 1px;
   grid-area: Main;
 }
+
+.ArticleCard{
+  border: solid red 1px;
+}

@@ -10,8 +10,15 @@ export const getPopularArticles = () => {
   })
 }
 
-export const getAllArticles = () => {
-  return myApi.get("/articles").then((res) => {
+export const getAllArticles = (req) => {
+  const params = {...req}
+  return myApi.get("/articles", {params}).then((res) => {
     return res.data.articles
+  })
+}
+
+export const getAllTopics = () => {
+  return myApi.get("/topics").then((res) => {
+    return res.data.topics
   })
 }

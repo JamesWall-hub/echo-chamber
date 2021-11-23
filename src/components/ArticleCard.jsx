@@ -1,6 +1,6 @@
 const ArticleCard = ({title, author, topic, votes, comment_count, created_at}) => {
     return(
-        <div>
+        <div className="ArticleCard">
         <p>/{topic}</p>
         <p>{title}</p>
         <p>{author}</p>
