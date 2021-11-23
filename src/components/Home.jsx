@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {getPopularArticles} from "../utils/api";
-import ArticleCard from "./ArticleCard"
+import ArticleCard from "./ArticleCard";
 
 const Home = () => {
     const [popularArticles, setPopularArticles] = useState([])

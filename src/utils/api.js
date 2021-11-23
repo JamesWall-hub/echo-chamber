@@ -9,3 +9,9 @@ export const getPopularArticles = () => {
     return res.data.articles
   })
 }
+
+export const getAllArticles = () => {
+  return myApi.get("/articles").then((res) => {
+    return res.data.articles
+  })
+}
