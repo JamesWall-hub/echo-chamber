@@ -1,7 +1,7 @@
 const CreatePost = () => {
     return(
         <div>
-            <p>this will be create post</p>
+            <p>Coming soon!</p>
         </div>
     )
 }

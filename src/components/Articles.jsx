@@ -12,14 +12,20 @@ const Articles = () => {
     const [selectedOrder, setSelectedOrder] = useState([]);
     const [selectedSortBy, setSelectedSortBy] = useState([]);
     const [selectedTitle, setSelectedTitle] = useState([])
+    const [selectedPage, setSelectedPage] = useState(1)
+    const [selectedLimit, setSelectedLimit] = useState(10)
     const params = {
         topic: selectedTopic,
         order: selectedOrder,
         sort_by: selectedSortBy,
-        title: selectedTitle
+        title: selectedTitle,
+        p: selectedPage,
+        limit: selectedLimit
     };
     useEffect(()=>{
+        console.log("rendering")
         setIsLoading(true)
+
         getAllTopics()
         .then((topicsFromServer) => {
             setAllTopics(topicsFromServer)
@@ -29,22 +35,42 @@ const Articles = () => {
             setIsLoading(false)
             setSelectedArticles(articlesFromServer)
         })
-    }, [selectedOrder, selectedSortBy, selectedTopic, selectedTitle])
+    }, [selectedOrder, selectedSortBy, selectedTopic, selectedTitle, selectedPage, selectedLimit])
 
     const handleChangeOrder = (event) => {
+        setSelectedPage(1)
         setIsDefault(false)
         setSelectedOrder(event.target.value);
     };
 
     const handleChangeSortBy = (event) => {
+        setSelectedPage(1)
         setIsDefault(false)
         setSelectedSortBy(event.target.value);
     }; 
 
     const handleChangeTitle = (event) => {
+        setSelectedPage(1)
         setIsDefault(false)
         setSelectedTitle(event.target.value);
     }; 
+
+    const handleChangeLimit = (event) => {
+        setSelectedPage(1)
+        setSelectedLimit(event.target.value)
+    };
+
+    const handleNextPage = () => {
+        setSelectedPage((prev) => {
+            return prev+=1
+        });
+    };
+
+    const handlePrevPage = () => {
+        setSelectedPage((prev) => {
+            return prev > 1 ? prev-=1 : null
+        });
+    };
 
     return(
         <div className="Articles">
@@ -56,6 +82,7 @@ const Articles = () => {
                 {allTopics.map((topic) => {
                     return (
                         <Chip
+                            key={topic.slug}
                             label={topic.slug}
                             onClick={() => {
                             setSelectedTopic(topic.slug);
@@ -79,13 +106,39 @@ const Articles = () => {
                 </select>
             </div>
             {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
+            <label>Results per page: </label>
+                <select onChange={handleChangeLimit}>
+                    <option value='10'>10</option>
+                    <option value='25'>25</option>
+                    <option value='50'>50</option>
+                    <option value='100'>100</option>
+                </select>
+                {/* review conditional button rendering */}
+                {selectedPage === 1 && selectedArticles.length === selectedLimit ?
+                <button onClick={handleNextPage}>Next Page</button> 
+                : null}
+
+                {selectedPage > 1 && selectedArticles.length === selectedLimit ? 
+                <>
+                <button onClick={handlePrevPage}>Previous Page</button>
+                <button onClick={handleNextPage}>Next Page</button>
+                </> 
+                : null}
+
+                {selectedPage > 1 && selectedArticles.length < selectedLimit ?
+                <button onClick={handlePrevPage}>Previous page</button>
+                : null}
+                {selectedPage === 1 && selectedArticles.length < selectedLimit ?
+                null
+                : null}
+
             {isLoading ? <p>Loading...</p> : null}
             <ul className="ArticleList" style={{listStyleType: "none"}}>
             {selectedArticles.map((article) => {
-                const {title, author, topic, votes, comment_count, created_at} = article
+                const {article_id, title, author, topic, votes, comment_count, created_at} = article
                 return(
                     <li key={article.article_id}>
-                        <ArticleCard title={title} author={author} topic={topic} votes={votes} comment_count={comment_count} created_at={created_at}/>
+                        <ArticleCard article_id={article_id} title={title} author={author} topic={topic} votes={votes} comment_count={comment_count} created_at={created_at}/>
                     </li>
                 )
             })}

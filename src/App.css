@@ -36,3 +36,11 @@ body {
 .ArticleCard{
   border: solid red 1px;
 }
+
+.ArticleList{
+  padding: 0;
+}
+
+.controls{
+  border: solid green 1px;
+}

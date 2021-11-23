@@ -1,6 +1,7 @@
-const ArticleCard = ({title, author, topic, votes, comment_count, created_at}) => {
+const ArticleCard = ({article_id, title, author, topic, votes, comment_count, created_at}) => {
     return(
         <div className="ArticleCard">
+        <p>#{article_id}</p>
         <p>/{topic}</p>
         <p>{title}</p>
         <p>{author}</p>
