@@ -26,7 +26,6 @@ const Articles = () => {
         })
         getAllArticles(params)
         .then((articlesFromServer)=>{
-            console.log(articlesFromServer)
             setIsLoading(false)
             setSelectedArticles(articlesFromServer)
         })
@@ -50,13 +49,10 @@ const Articles = () => {
     return(
         <div className="Articles">
             <div className="controls">
-            <form action={handleChangeTitle}>
-            <input
+            <input onChange={handleChangeTitle}
             type="text"
             placeholder="Search by title"
             />
-        <button type="submit">Search</button>
-    </form>
                 {allTopics.map((topic) => {
                     return (
                         <Chip
