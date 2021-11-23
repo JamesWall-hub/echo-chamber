@@ -1,3 +1,34 @@
 .App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content min-content auto;
+  grid-template-areas: 
+  'Title'
+  'Nav'
+  'Main';
+}
+
+body {
+  margin: 5;
+  font-family: 'Questrial', sans-serif;
+}
+
+.Title{
   text-align: center;
+  border: solid blue 1px;
+  grid-area: Title;
+}
+
+.Nav{
+  text-align: center;
+  border: solid purple 1px;
+  grid-area: Nav;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Home{
+  border: solid rgb(0, 153, 255) 1px;
+  grid-area: Main;
 }
