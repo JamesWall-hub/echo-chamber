@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { useContext } from "react"
+import { UserContext } from "../contexts/User"
 import { getArticleById, getCommentsByArticle } from "../utils/api"
 import CommentCard from "./CommentCard"
 
 const SingleArticle = () => {
-
+    const {user, isLoggedIn} = useContext(UserContext)
     const [currentArticle, setCurrentArticle] = useState([])
     const [displayedComments, setDislayedComments] = useState([])
     const [sortComments, setSortComments] = useState([])
@@ -56,6 +58,9 @@ const SingleArticle = () => {
         <p>Created: {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}</p>
         </main>
         <div className="Comments">
+        {isLoggedIn ?
+        <p>This will be {user}'s comment component</p>
+        : <p>Please login to comment</p>}
         <h3>Comments: </h3>
         <label>Sort by: </label>
                 <select onChange={handleChangeSortBy}>

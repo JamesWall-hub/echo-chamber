@@ -3,7 +3,7 @@ import {getAllArticles, getAllTopics} from "../utils/api";
 import Chip from "@mui/material/Chip";
 import ArticleCard from "./ArticleCard";
 
-const Articles = (setSelectedArticle) => {
+const Articles = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [isDefault, setIsDefault] = useState(true)
     const [selectedArticles, setSelectedArticles] = useState([])
@@ -23,6 +23,7 @@ const Articles = (setSelectedArticle) => {
         limit: selectedLimit
     };
     useEffect(()=>{
+        setSelectedArticles([])
         console.log("rendering")
         setIsLoading(true)
 
@@ -73,6 +74,7 @@ const Articles = (setSelectedArticle) => {
 
     return(
         <div className="Articles">
+            {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
             <div className="controls">
             <input onChange={handleChangeTitle}
             type="text"
@@ -104,7 +106,6 @@ const Articles = (setSelectedArticle) => {
                     <option value='desc'>Descending</option>
                     <option value='asc'>Ascending</option>
                 </select>
-            {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
             <label>Results per page: </label>
                 <select onChange={handleChangeLimit}>
                     <option value='10'>10</option>
