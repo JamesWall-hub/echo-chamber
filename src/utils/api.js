@@ -29,8 +29,9 @@ export const getArticleById = (id) => {
   })
 }
 
-export const getCommentsByArticle = (id) => {
-  return myApi.get(`/articles/${id}/comments`).then((res) => {
+export const getCommentsByArticle = (id, req) => {
+  const params = {...req}
+  return myApi.get(`/articles/${id}/comments`, {params}).then((res) => {
     return res.data.comments
   })
 }

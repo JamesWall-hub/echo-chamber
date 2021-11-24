@@ -6,20 +6,41 @@ import CommentCard from "./CommentCard"
 const SingleArticle = () => {
 
     const [currentArticle, setCurrentArticle] = useState([])
-    const [dislpayedComments, setDislayedComments] = useState([])
+    const [displayedComments, setDislayedComments] = useState([])
+    const [sortComments, setSortComments] = useState([])
+    const [commentLimit, setCommentLimit] = useState(10)
     const { article_id } = useParams()
 
-    useEffect(()=>{
+    const commentParams = {
+        sort_by: sortComments,
+        limit: commentLimit,
+    }
+
+    useEffect(() => {
+        console.log("rendering")
         getArticleById(article_id)
         .then((article) => {
             setCurrentArticle(article)
         })
+    }, [])
 
-        getCommentsByArticle(article_id)
+    useEffect(()=>{
+        console.log("rendering")
+        getCommentsByArticle(article_id, commentParams)
         .then((comments) => {
             setDislayedComments(comments)
         })
-    }, [])
+    }, [sortComments, commentLimit])
+
+    const handleChangeSortBy = (event) => {
+        setSortComments(event.target.value);
+    }; 
+
+    const handleMoreComments = () => {
+        setCommentLimit((prev) => {
+            return prev += 10
+        })
+    }
 
     const { topic, title, body, author, votes, comment_count, created_at} = currentArticle
 
@@ -36,9 +57,14 @@ const SingleArticle = () => {
         </main>
         <div className="Comments">
         <h3>Comments: </h3>
+        <label>Sort by: </label>
+                <select onChange={handleChangeSortBy}>
+                    <option value='created_at'>Date</option>
+                    <option value='votes'>Votes</option>
+                </select>
         </div>
         <ul className="CommentList" style={{listStyleType: "none"}}>
-            {dislpayedComments.map((comment) => {
+            {displayedComments.map((comment) => {
                 const {author, body, votes, created_at} = comment
                 return(
                     <li key={comment.comment_id}>
@@ -52,6 +78,11 @@ const SingleArticle = () => {
                 )
             })}
             </ul>
+            {displayedComments.length % 10 === 0 ?
+            <button onClick={handleMoreComments}>Load more</button>
+            :null
+            }
+            
         </div>
     )
 }

@@ -6,7 +6,7 @@ const ArticleCard = ({author, body, votes, created_at}) => {
         <p>{body}</p>
         <p>{author}</p>
         <p>Votes: {votes}</p>
-        <p>Created: {created_at.slice(0,10).split("-").reverse().join("-")}</p>
+        <p>Created: {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}</p>
         </div>
     )
 }

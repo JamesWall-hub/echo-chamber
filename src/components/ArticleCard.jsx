@@ -10,7 +10,7 @@ const ArticleCard = ({article_id, title, author, topic, votes, comment_count, cr
         <p>{author}</p>
         <p>Votes: {votes}</p>
         <p>Comments: {comment_count}</p>
-        <p>Created: {created_at.slice(0,10).split("-").reverse().join("-")}</p>
+        <p>Created: {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}</p>
         </div>
     )
 }
