@@ -41,6 +41,18 @@ body {
   padding: 0;
 }
 
+.CommentList{
+  padding: 0;
+}
+
 .controls{
   border: solid green 1px;
+}
+
+.SingleArticle{
+  border: solid coral 1px;
+}
+
+.CommentCard{
+  border: solid pink 1px;
 }

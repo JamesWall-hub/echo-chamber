@@ -22,3 +22,15 @@ export const getAllTopics = () => {
     return res.data.topics
   })
 }
+
+export const getArticleById = (id) => {
+  return myApi.get(`/articles/${id}`).then((res) => {
+    return res.data.article
+  })
+}
+
+export const getCommentsByArticle = (id) => {
+  return myApi.get(`/articles/${id}/comments`).then((res) => {
+    return res.data.comments
+  })
+}

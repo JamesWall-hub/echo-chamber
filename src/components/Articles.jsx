@@ -3,7 +3,7 @@ import {getAllArticles, getAllTopics} from "../utils/api";
 import Chip from "@mui/material/Chip";
 import ArticleCard from "./ArticleCard";
 
-const Articles = () => {
+const Articles = (setSelectedArticle) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isDefault, setIsDefault] = useState(true)
     const [selectedArticles, setSelectedArticles] = useState([])
@@ -84,6 +84,7 @@ const Articles = () => {
                             key={topic.slug}
                             label={topic.slug}
                             onClick={() => {
+                            setIsDefault(false)
                             setSelectedTopic(topic.slug);
                             }}
                             onDelete={() => {
@@ -103,7 +104,6 @@ const Articles = () => {
                     <option value='desc'>Descending</option>
                     <option value='asc'>Ascending</option>
                 </select>
-            </div>
             {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
             <label>Results per page: </label>
                 <select onChange={handleChangeLimit}>
@@ -132,10 +132,8 @@ const Articles = () => {
                 <button onClick={handlePrevPage}>Previous Page</button>
                 </> 
                 : null}
-
-                
-
-                
+            
+            </div>
                 
 
             {isLoading ? <p>Loading...</p> : null}
@@ -144,7 +142,15 @@ const Articles = () => {
                 const {article_id, title, author, topic, votes, comment_count, created_at} = article
                 return(
                     <li key={article.article_id}>
-                        <ArticleCard article_id={article_id} title={title} author={author} topic={topic} votes={votes} comment_count={comment_count} created_at={created_at}/>
+                        <ArticleCard 
+                            article_id={article_id} 
+                            title={title} 
+                            author={author} 
+                            topic={topic} 
+                            votes={votes} 
+                            comment_count={comment_count} 
+                            created_at={created_at}
+                        />
                     </li>
                 )
             })}
