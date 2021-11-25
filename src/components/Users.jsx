@@ -17,7 +17,7 @@ const Users = () => {
                 <>
                 <p>{singleUser.username}</p>
                 <button onClick={() => {
-                    setUser(singleUser)
+                    setUser(singleUser.username)
                     setIsLoggedIn(true)
                 }}>Login in as {singleUser.username}</button>
                 </>

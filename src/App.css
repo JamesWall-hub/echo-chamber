@@ -56,3 +56,7 @@ body {
 .CommentCard{
   border: solid pink 1px;
 }
+
+.PostComment{
+  border: solid turquoise 1px;
+}
