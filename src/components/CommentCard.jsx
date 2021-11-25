@@ -1,6 +1,6 @@
 
 
-const ArticleCard = ({author, body, votes, created_at}) => {
+const CommentCard = ({author, body, votes, created_at}) => {
     return(
         <div className="CommentCard">
         <p>{body}</p>
@@ -11,4 +11,4 @@ const ArticleCard = ({author, body, votes, created_at}) => {
     )
 }
 
-export default ArticleCard;
+export default CommentCard;

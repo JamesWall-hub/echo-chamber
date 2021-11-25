@@ -35,3 +35,9 @@ export const getCommentsByArticle = (id, req) => {
     return res.data.comments
   })
 }
+
+export const getAllUsers = () => {
+  return myApi.get("/users").then((res) => {
+    return res.data.users
+  })
+}
