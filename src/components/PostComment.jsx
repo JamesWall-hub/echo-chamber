@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router'
 import { UserContext } from '../contexts/User'
-import { postComment } from '../utils/api'
+import { postNewComment } from '../utils/api'
 
 export default function PostComment({setPostedComment}) {
     const { article_id } = useParams()
@@ -14,8 +14,7 @@ export default function PostComment({setPostedComment}) {
     }
     const handlePostComment = (event) => {
         event.preventDefault()
-        console.log(commentBody)
-        postComment(article_id, user, commentBody)
+        postNewComment(article_id, user, commentBody)
         .then(() => {
             setPostedComment([])
         }) //triggers rerender of comments
@@ -31,7 +30,11 @@ export default function PostComment({setPostedComment}) {
         </form>
         </>
         : 
-        <>Please <Link to="/users">sign in</Link> to comment</>
+        <>Please 
+        <Link to="/users"> sign in </Link>
+        or
+        <Link to="/create_user"> create a user </Link>
+        to comment</>
         }
         </div>
     )

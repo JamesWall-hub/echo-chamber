@@ -42,10 +42,21 @@ export const getAllUsers = () => {
   })
 }
 
-export const postComment = (id, user, body) => {
+export const postNewComment = (id, user, body) => {
   return myApi.post(`/articles/${id}/comments`, {
     username: user,
     body: body
+  })
+  .then((res)=>{
+    return res.data.comment
+  })
+}
+
+export const postNewUser = (username, name, avatar) => {
+  return myApi.post("/users", {
+    username: username,
+    name: name,
+    avatar_url: avatar
   })
   .then((res)=>{
     return res.data.comment

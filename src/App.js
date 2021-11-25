@@ -8,6 +8,7 @@ import Home from "./components/Home"
 import Articles from "./components/Articles"
 import SingleArticle from "./components/SingleArticle"
 import Users from "./components/Users"
+import CreateUser from "./components/CreateUser"
 import CreatePost from "./components/CreatePost"
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
     <Route path="/articles" element={<Articles/>}/>
     <Route path="/articles/:article_id" element={<SingleArticle/>}/>
     <Route path="/users" element={<Users/>}/>
+    <Route path="/create_user" element={<CreateUser/>}/>
     <Route path="/create_post" element={<CreatePost/>}/>
     </Routes>
     </div>
