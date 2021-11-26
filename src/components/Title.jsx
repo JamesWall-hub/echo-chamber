@@ -3,11 +3,15 @@ import { UserContext } from "../contexts/User";
 import { Link } from "react-router-dom";
 
 const Title = () => {
-    const {user, setUser, isLoggedIn, setIsLoggedIn} = useContext(UserContext)
+    const {currUser, setCurrUser, isLoggedIn, setIsLoggedIn} = useContext(UserContext)
     const handleSignOut = () => {
         setIsLoggedIn(false)
-        setUser([])
+        setCurrUser([])
     }
+
+    useEffect(() => {
+
+    }, [currUser])
     
     return(
         <>
@@ -16,7 +20,7 @@ const Title = () => {
         {isLoggedIn ?
         <>
         <Link to="/users">
-            <p>{user}</p>
+            <p>{currUser}</p>
         </Link>
         <button onClick={handleSignOut}>Sign out</button>
         </>

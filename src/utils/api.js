@@ -59,6 +59,6 @@ export const postNewUser = (username, name, avatar) => {
     avatar_url: avatar
   })
   .then((res)=>{
-    return res.data.comment
+    return res.data.user
   })
 }
