@@ -22,6 +22,7 @@ const Users = () => {
             return(
                 <>
                 <p>{singleUser.username}</p>
+                <img src={singleUser.avatar_url}></img>
                 <button onClick={() => {
                     setCurrUser(singleUser.username)
                     setIsLoggedIn(true)

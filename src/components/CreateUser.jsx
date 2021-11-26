@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
 import { UserContext } from '../contexts/User'
 import { postNewUser } from '../utils/api'
 
@@ -47,3 +46,7 @@ export default function CreateUser() {
         </>
     )
 }
+
+//users to make
+
+//JimCognito, MasterChief, houseofleaves, EdgeyButHedgey, Gutsy, boredatwork, acollectionofcells, 2daysfromretirement, JoJo, CulinaryCat, outofideas, Hackerman, Cthulhu, RobotJones

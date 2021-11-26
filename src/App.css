@@ -9,6 +9,12 @@
   'Main';
 }
 
+img{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
 body {
   margin: 5;
   font-family: 'Questrial', sans-serif;
