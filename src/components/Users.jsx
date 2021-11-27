@@ -26,7 +26,7 @@ const Users = () => {
                 <button onClick={() => {
                     setCurrUser(singleUser.username)
                     setIsLoggedIn(true)
-                }}>Login in as {singleUser.username}</button>
+                }}>Sign in as {singleUser.username}</button>
                 </>
             )
         })

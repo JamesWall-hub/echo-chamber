@@ -38,7 +38,6 @@ export const getCommentsByArticle = (id, req) => {
 
 export const getAllUsers = () => {
   return myApi.get("/users").then((res) => {
-    console.log(res.data.users)
     return res.data.users
   })
 }
@@ -65,9 +64,19 @@ export const postNewUser = (username, name, avatar) => {
 }
 
 export const voteArticle = (article_id, votes) => {
-  console.log(article_id, votes)
+  return myApi.patch(`/articles/${article_id}`, {
+    inc_votes: votes
+  })
+  .then((res) => {
+    return res.data.article
+  })
 }
 
 export const voteComment = (comment_id, votes) => {
-  console.log(comment_id, votes)
+  return myApi.patch(`/comments/${comment_id}`, {
+    inc_votes: votes
+  })
+  .then((res) => {
+    return res.data.comment
+  })
 }
