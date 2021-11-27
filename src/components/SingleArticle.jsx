@@ -11,6 +11,7 @@ const SingleArticle = () => {
     const [currentArticle, setCurrentArticle] = useState([])
     const [currVotes, setCurrVotes] = useState([])
     const { article_id } = useParams()
+    const [currBody, setCurrBody] = useState([])
 
     useEffect(() => {
         console.log("rendering")
@@ -18,6 +19,7 @@ const SingleArticle = () => {
         .then((article) => {
             setCurrentArticle(article)
             setCurrVotes(article.votes)
+            setCurrBody(article.body)
         })
     }, [])
 
@@ -27,7 +29,7 @@ const SingleArticle = () => {
         <main className="SingleArticle">
         <p>/{topic}</p>
         <h3>{title}</h3>
-        <ArticleBody author={author} body={body}/>
+        <ArticleBody author={author} currBody={currBody} setCurrBody={setCurrBody}/>
         {author ? <UserAndAvatar username={author}/>: null}
         <ArticleVoter article_id={article_id} currVotes={currVotes} setCurrVotes={setCurrVotes} author={author}/>
         <p>Comments: {comment_count}</p>

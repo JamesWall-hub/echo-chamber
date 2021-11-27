@@ -86,3 +86,11 @@ export const getUserById = ({username}) => {
     return res.data.user
   })
 }
+
+export const patchArticle = ({article_id, newBody}) => {
+  return myApi.patch(`/articles/${article_id}`,{
+    body: newBody
+  }).then((res) => {
+    return res.data.article
+  })
+}
