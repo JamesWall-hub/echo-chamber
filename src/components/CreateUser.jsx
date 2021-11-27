@@ -46,7 +46,3 @@ export default function CreateUser() {
         </>
     )
 }
-
-//users to make
-
-//JimCognito, MasterChief, houseofleaves, EdgeyButHedgey, Gutsy, boredatwork, acollectionofcells, 2daysfromretirement, JoJo, CulinaryCat, outofideas, Hackerman, Cthulhu, RobotJonesq

@@ -63,3 +63,11 @@ export const postNewUser = (username, name, avatar) => {
     return res.data.user
   })
 }
+
+export const voteArticle = (article_id, votes) => {
+  console.log(article_id, votes)
+}
+
+export const voteComment = (comment_id, votes) => {
+  console.log(comment_id, votes)
+}

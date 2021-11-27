@@ -6,8 +6,8 @@ import ArticleVoter from "./ArticleVoter"
 import Comments from "./Comments"
 
 const SingleArticle = () => {
-    const {currUser, isLoggedIn} = useContext(UserContext)
     const [currentArticle, setCurrentArticle] = useState([])
+    const [currVotes, setCurrVotes] = useState([])
     const { article_id } = useParams()
 
     useEffect(() => {
@@ -15,11 +15,11 @@ const SingleArticle = () => {
         getArticleById(article_id)
         .then((article) => {
             setCurrentArticle(article)
+            setCurrVotes(article.votes)
         })
     }, [])
 
     const { topic, title, body, author, votes, comment_count, created_at} = currentArticle
-
     return(
         <div>
         <main className="SingleArticle">
@@ -27,7 +27,7 @@ const SingleArticle = () => {
         <h3>{title}</h3>
         <p>{body}</p>
         <p>{author}</p>
-        <ArticleVoter article_id={article_id} votes={votes} author={author}/>
+        <ArticleVoter article_id={article_id} currVotes={currVotes} setCurrVotes={setCurrVotes} author={author}/>
         <p>Comments: {comment_count}</p>
         <p>Created: {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}</p>
         </main>

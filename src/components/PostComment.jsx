@@ -34,7 +34,7 @@ export default function PostComment({setPostedComment}) {
         <Link to="/users"> sign in </Link>
         or
         <Link to="/create_user"> create a user </Link>
-        to comment</>
+        to comment.</>
         }
         </div>
     )
