@@ -108,7 +108,6 @@ export const deleteComment = ({comment_id}) => {
 }
 
 export const deleteArticle = ({article_id}) => {
-  return myApi.delete(`/articles/${article_id}`).then((res) => {
-    console.log(res.status)
-  })
+  console.log("making it here", article_id)
+  return myApi.delete(`/articles/${article_id}`)
 }
