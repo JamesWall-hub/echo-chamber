@@ -46,10 +46,11 @@ export default function Comments() {
         </div>
         <ul className="CommentList" style={{listStyleType: "none"}}>
             {displayedComments.map((comment) => {
-                const {author, body, votes, created_at} = comment
+                const {comment_id, author, body, votes, created_at} = comment
                 return(
-                    <li key={comment.comment_id}>
-                        <CommentCard 
+                    <li key={comment_id}>
+                        <CommentCard
+                            comment_id={comment_id}
                             author={author} 
                             body={body}
                             votes={votes} 

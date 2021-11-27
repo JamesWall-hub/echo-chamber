@@ -7,14 +7,14 @@ import { postNewComment } from '../utils/api'
 export default function PostComment({setPostedComment}) {
     const { article_id } = useParams()
     const [commentBody, setCommentBody] = useState("")
-    const {user, isLoggedIn} = useContext(UserContext)
+    const {currUser, isLoggedIn} = useContext(UserContext)
 
     const handleCommentBody = (event) => {
         setCommentBody(event.target.value)
     }
     const handlePostComment = (event) => {
         event.preventDefault()
-        postNewComment(article_id, user, commentBody)
+        postNewComment(article_id, currUser, commentBody)
         .then(() => {
             setPostedComment([])
         }) //triggers rerender of comments
@@ -24,7 +24,7 @@ export default function PostComment({setPostedComment}) {
         {isLoggedIn ?
         <>
         <form onSubmit={handlePostComment}>
-        <h4>{user}</h4>
+        <h4>{currUser}:</h4>
         <input onChange={handleCommentBody}type="text" placeholder="Post a comment"></input>
         <input type="submit" value="Comment"></input>
         </form>
