@@ -94,3 +94,11 @@ export const patchArticle = ({article_id, newBody}) => {
     return res.data.article
   })
 }
+
+export const patchComment = ({comment_id, newBody}) => {
+  return myApi.patch(`/comments/${comment_id}`,{
+    body: newBody
+  }).then((res) => {
+    return res.data.article
+  })
+}
