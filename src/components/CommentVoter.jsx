@@ -20,7 +20,7 @@ export default function CommentVoter({comment_id, votes, author}) {
     }
     return (
         isLoggedIn ?
-            author === currUser ? 
+            author === currUser[0] ? 
             <p>Votes: {currVotes}</p>
             :
             <>

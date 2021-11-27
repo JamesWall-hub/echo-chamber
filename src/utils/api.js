@@ -80,3 +80,9 @@ export const voteComment = (comment_id, votes) => {
     return res.data.comment
   })
 }
+
+export const getUserById = ({username}) => {
+  return myApi.get(`/users/${username}`).then((res) => {
+    return res.data.user
+  })
+}

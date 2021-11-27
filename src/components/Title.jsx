@@ -8,10 +8,6 @@ const Title = () => {
         setIsLoggedIn(false)
         setCurrUser([])
     }
-
-    useEffect(() => {
-
-    }, [currUser])
     
     return(
         <>
@@ -19,8 +15,9 @@ const Title = () => {
             <h1>Echo Chamber</h1>
         {isLoggedIn ?
         <>
+        <img src={currUser[1]}></img>
         <Link to="/users">
-            <p>{currUser}</p>
+            <p>{currUser[0]}</p>
         </Link>
         <button onClick={handleSignOut}>Sign out</button>
         </>

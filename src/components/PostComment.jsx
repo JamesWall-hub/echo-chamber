@@ -24,7 +24,8 @@ export default function PostComment({setPostedComment}) {
         {isLoggedIn ?
         <>
         <form onSubmit={handlePostComment}>
-        <h4>{currUser}:</h4>
+        <img src={currUser[1]}></img>
+        <h4>{currUser[0]}:</h4>
         <input onChange={handleCommentBody}type="text" placeholder="Post a comment"></input>
         <input type="submit" value="Comment"></input>
         </form>

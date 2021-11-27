@@ -22,7 +22,7 @@ export default function ArticleVoter({article_id, author, currVotes, setCurrVote
     }
     return (
         isLoggedIn ?
-            author === currUser ? 
+            author === currUser[0] ? 
             <p>Votes: {currVotes}</p>
             :
             <>

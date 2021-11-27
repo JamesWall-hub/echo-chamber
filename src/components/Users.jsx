@@ -1,6 +1,7 @@
 import { UserContext } from "../contexts/User"
 import { useContext, useEffect, useState } from "react"
 import { getAllUsers } from "../utils/api"
+import UserAndAvatar from "./UserAndAvatar"
 
 const Users = () => {
     const {setCurrUser, setIsLoggedIn, isLoggedIn, currUser} = useContext(UserContext)
@@ -16,15 +17,14 @@ const Users = () => {
     }, [])
     return (
         isLoading ? <p>Loading...</p> :
-        isLoggedIn ? <p>You are now signed in as {currUser}!</p>
+        isLoggedIn ? <p>You are now signed in as {currUser[0]}!</p>
         :
         allUsers.map((singleUser) => {
             return(
                 <>
-                <p>{singleUser.username}</p>
-                <img src={singleUser.avatar_url}></img>
+                <UserAndAvatar username={singleUser.username}/>
                 <button onClick={() => {
-                    setCurrUser(singleUser.username)
+                    setCurrUser([singleUser.username, singleUser.avatar_url])
                     setIsLoggedIn(true)
                 }}>Sign in as {singleUser.username}</button>
                 </>
