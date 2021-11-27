@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import { UserContext } from '../contexts/User'
 import { patchArticle } from '../utils/api'
 
-export default function ArticleBody({author, currBody, setCurrBody}) {
+export default function ArticleBody({author, currBody, setCurrBody, handleDeleteArticle}) {
     const {currUser} = useContext(UserContext)
     const [newBody, setNewBody] = useState([])
     const [isEditing, setIsEditing] = useState(false)
@@ -40,7 +40,7 @@ export default function ArticleBody({author, currBody, setCurrBody}) {
         {currUser[0] === author ?
         <>
         <button onClick={handleArticleBody}>Edit</button>
-        <button>Delete</button>
+        <button onClick={handleDeleteArticle}>Delete</button>
         </>
         : null}
 
