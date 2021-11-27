@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../contexts/User'
 import { patchComment } from '../utils/api'
 
-export default function CommentBody({author, currBody, setCurrBody, comment_id}) {
+export default function CommentBody({author, currBody, setCurrBody, comment_id, handleDeleteComment}) {
     const {currUser} = useContext(UserContext)
     const [newBody, setNewBody] = useState([])
     const [isEditing, setIsEditing] = useState(false)
@@ -38,7 +38,7 @@ export default function CommentBody({author, currBody, setCurrBody, comment_id})
         {currUser[0] === author ?
         <>
         <button onClick={handleCommentBody}>Edit</button>
-        <button>Delete</button>
+        <button onClick={handleDeleteComment}>Delete</button>
         </>
         : null}
 

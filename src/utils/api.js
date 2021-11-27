@@ -102,3 +102,7 @@ export const patchComment = ({comment_id, newBody}) => {
     return res.data.article
   })
 }
+
+export const deleteComment = ({comment_id}) => {
+  return myApi.delete(`/comments/${comment_id}`)
+}
