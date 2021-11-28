@@ -9,6 +9,11 @@
   'Main';
 }
 
+button{
+  border:none;
+  background-color: white;
+}
+
 img{
   border-radius: 50%;
   height: 50px;
@@ -116,9 +121,12 @@ a:hover {
 
 .PostComment{
   padding: 10px;
+  display: grid;
+  width:500px;
 }
 
 .CreatePost{
+  display: grid;
   border: solid darkblue 1px;
 }
 
@@ -139,10 +147,12 @@ a:hover {
 }
 
 .EditUser{
+  display: grid;
   border: solid darkmagenta 1px;
 }
 
 .CreateUser{
+  display: grid;
   border: solid darkorange 1px;
 }
 
