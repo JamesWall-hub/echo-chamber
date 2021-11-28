@@ -123,3 +123,24 @@ export const patchUser = (username, { newUsername, newName, newAvatarURL}) => {
     return res.data.user
   })
 }
+
+export const postTopic = ({topic_slug}) => {
+  return myApi.post(`/topics`,{
+    slug: topic_slug
+  })
+  .then((res) => {
+    return res.data.topic
+  })
+}
+
+export const postArticle = ({author, title, topic, body}) => {
+  return myApi.post(`/articles`,{
+    author: author,
+    title: title,
+    topic: topic,
+    body: body
+  })
+  .then((res)=>{
+    return res.data.article
+  })
+}
