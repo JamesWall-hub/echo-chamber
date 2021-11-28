@@ -8,7 +8,6 @@ const Title = () => {
         setIsLoggedIn(false)
         setCurrUser([])
     }
-    const editLink = `edit_${currUser[0]}`
     
     return(
         <>
@@ -20,7 +19,7 @@ const Title = () => {
         <Link to="/users">
             <p>{currUser[0]}</p>
         </Link>
-        <Link to={editLink}>
+        <Link to="edit_user">
             <p>Edit user</p>
         </Link>
         <button onClick={handleSignOut}>Sign out</button>

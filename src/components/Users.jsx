@@ -22,7 +22,7 @@ const Users = () => {
         allUsers.map((singleUser) => {
             return(
                 <>
-                <UserAndAvatar username={singleUser.username}/>
+                <UserAndAvatar key={singleUser.username} username={singleUser.username}/>
                 <button onClick={() => {
                     setCurrUser([singleUser.username, singleUser.avatar_url, singleUser.name])
                     setIsLoggedIn(true)

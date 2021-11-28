@@ -11,9 +11,9 @@ export default function UserAndAvatar(username) {
         })
     }, [])
     return (
-        <>
+        <div className="UserAndAvatar">
             <img src={thisUser[1]}></img>
             <p>{thisUser[0]}</p>
-        </>
+        </div>
     )
 }

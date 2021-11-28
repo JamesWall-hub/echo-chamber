@@ -111,6 +111,7 @@ export const deleteArticle = ({article_id}) => {
   return myApi.delete(`/articles/${article_id}`)
 }
 
+//works for custom users and not for users from original env
 export const patchUser = (username, { newUsername, newName, newAvatarURL}) => {
   console.log(username, newUsername, newName, newAvatarURL)
   return myApi.patch(`/users/${username}`, {

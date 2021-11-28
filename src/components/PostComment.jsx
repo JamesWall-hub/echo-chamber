@@ -15,7 +15,7 @@ export default function PostComment({setPostedComment}) {
     }
     const handlePostComment = (event) => {
         event.preventDefault()
-        postNewComment(article_id, currUser, commentBody)
+        postNewComment(article_id, currUser[0], commentBody)
         .then(() => {
             setPostedComment([])
         }) //triggers rerender of comments

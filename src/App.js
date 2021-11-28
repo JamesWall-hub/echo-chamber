@@ -15,7 +15,6 @@ import EditUser from "./components/EditUser"
 const App = () => {
   const [currUser, setCurrUser] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const editLink = `edit_${currUser[0]}`
   return (
     <BrowserRouter>
     <UserContext.Provider value={{currUser, setCurrUser, isLoggedIn, setIsLoggedIn}}>
@@ -27,7 +26,7 @@ const App = () => {
     <Route path="/articles" element={<Articles/>}/>
     <Route path="/articles/:article_id" element={<SingleArticle/>}/>
     <Route path="/users" element={<Users/>}/>
-    <Route path={editLink} element={<EditUser/>}/>
+    <Route path="/edit_user" element={<EditUser/>}/>
     <Route path="/create_user" element={<CreateUser/>}/>
     <Route path="/create_post" element={<CreatePost/>}/>
     </Routes>
