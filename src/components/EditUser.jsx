@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { UserContext } from '../contexts/User'
 import { patchUser } from '../utils/api'
 import TextField from '@mui/material/TextField';
@@ -9,9 +9,16 @@ import Button from '@mui/material/Button';
 export default function EditUser() {
     const {currUser, setCurrUser, isLoggedIn} = useContext(UserContext)
     const [hasPatched, setHasPatched] = useState(false)
-    const [newUsername, setNewUsername] = useState(currUser[0])
-    const [newName, setNewName] = useState(currUser[2])
-    const [newAvatarURL, setNewAvatarURL] = useState(currUser[1])
+    const [newUsername, setNewUsername] = useState([])
+    const [newName, setNewName] = useState([])
+    const [newAvatarURL, setNewAvatarURL] = useState([])
+
+
+    useEffect(() => {
+        setNewUsername(currUser[0])
+        setNewName(currUser[2])
+        setNewAvatarURL(currUser[1])
+    }, [])
 
 
     const handlePatchUser = (event) => {
