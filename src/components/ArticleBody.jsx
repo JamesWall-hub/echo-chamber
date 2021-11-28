@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router'
 import { UserContext } from '../contexts/User'
 import { patchArticle } from '../utils/api'
+import TextField from '@mui/material/TextField';
 
 export default function ArticleBody({author, currBody, setCurrBody, handleDeleteArticle}) {
     const {currUser} = useContext(UserContext)
@@ -28,7 +29,7 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
     return (
         isEditing ?
         <>
-        <input type="text" value={newBody} onChange={handleNewBody}></input>
+        <TextField label="Edit your article" value={newBody} onChange={handleNewBody}/>
         <button onClick={handlePatchArticle}>Confirm</button>
         <button onClick={handleCancel}>Cancel</button>
         </>

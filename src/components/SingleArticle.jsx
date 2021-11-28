@@ -25,7 +25,6 @@ const SingleArticle = () => {
     }, [])
     const handleDeleteArticle = () => {
         setIsDeleted(true)
-        console.log(article_id)
         deleteArticle({article_id})
     }
 

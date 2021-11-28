@@ -108,6 +108,18 @@ export const deleteComment = ({comment_id}) => {
 }
 
 export const deleteArticle = ({article_id}) => {
-  console.log("making it here", article_id)
   return myApi.delete(`/articles/${article_id}`)
+}
+
+export const patchUser = (username, { newUsername, newName, newAvatarURL}) => {
+  console.log(username, newUsername, newName, newAvatarURL)
+  return myApi.patch(`/users/${username}`, {
+    username: username,
+    new_username: newUsername,
+    name: newName, 
+    avatar_url: newAvatarURL
+
+  }).then((res) => {
+    return res.data.user
+  })
 }

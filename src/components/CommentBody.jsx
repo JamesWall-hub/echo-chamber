@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../contexts/User'
 import { patchComment } from '../utils/api'
+import TextField from '@mui/material/TextField';
 
 export default function CommentBody({author, currBody, setCurrBody, comment_id, handleDeleteComment}) {
     const {currUser} = useContext(UserContext)
@@ -26,7 +27,7 @@ export default function CommentBody({author, currBody, setCurrBody, comment_id, 
     return (
         isEditing ?
         <>
-        <input type="text" value={newBody} onChange={handleNewBody}></input>
+        <TextField label="Edit your comment" value={newBody} onChange={handleNewBody}/>
         <button onClick={handlePatchComment}>Confirm</button>
         <button onClick={handleCancel}>Cancel</button>
         </>

@@ -24,7 +24,7 @@ const Users = () => {
                 <>
                 <UserAndAvatar username={singleUser.username}/>
                 <button onClick={() => {
-                    setCurrUser([singleUser.username, singleUser.avatar_url])
+                    setCurrUser([singleUser.username, singleUser.avatar_url, singleUser.name])
                     setIsLoggedIn(true)
                 }}>Sign in as {singleUser.username}</button>
                 </>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router'
 import { UserContext } from '../contexts/User'
 import { postNewComment } from '../utils/api'
+import TextField from '@mui/material/TextField';
 
 export default function PostComment({setPostedComment}) {
     const { article_id } = useParams()
@@ -26,7 +27,7 @@ export default function PostComment({setPostedComment}) {
         <form onSubmit={handlePostComment}>
         <img src={currUser[1]}></img>
         <h4>{currUser[0]}:</h4>
-        <input onChange={handleCommentBody}type="text" placeholder="Post a comment"></input>
+        <TextField label="Post a comment" onChange={handleCommentBody}/>
         <input type="submit" value="Comment"></input>
         </form>
         </>

@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import {getAllArticles, getAllTopics} from "../utils/api";
-import Chip from "@mui/material/Chip";
 import ArticleCard from "./ArticleCard";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 
 const Articles = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -9,8 +13,8 @@ const Articles = () => {
     const [selectedArticles, setSelectedArticles] = useState([])
     const [allTopics, setAllTopics] = useState([])
     const [selectedTopic, setSelectedTopic] = useState([]);
-    const [selectedOrder, setSelectedOrder] = useState([]);
-    const [selectedSortBy, setSelectedSortBy] = useState([]);
+    const [selectedOrder, setSelectedOrder] = useState("desc");
+    const [selectedSortBy, setSelectedSortBy] = useState("created_at");
     const [selectedTitle, setSelectedTitle] = useState([])
     const [selectedPage, setSelectedPage] = useState(1)
     const [selectedLimit, setSelectedLimit] = useState(10)
@@ -54,7 +58,12 @@ const Articles = () => {
         setSelectedPage(1)
         setIsDefault(false)
         setSelectedTitle(event.target.value);
-    }; 
+    };
+
+    const handleChangeTopic = (event) => {
+        setIsDefault(false)
+        setSelectedTopic(event.target.value)
+    }
 
     const handleChangeLimit = (event) => {
         setSelectedLimit(event.target.value)
@@ -76,43 +85,71 @@ const Articles = () => {
         <div className="Articles">
             {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
             <div className="controls">
-            <input onChange={handleChangeTitle}
-            type="text"
-            placeholder="Search by title"
-            />
+
+            <TextField label="Search by title" onChange={handleChangeTitle}/>
+
+            <FormControl sx={{ m: 1, minWidth: 80 }}>
+            <InputLabel>Topic</InputLabel>
+                <Select
+                  value={selectedTopic}
+                  label="Topic"
+                  onChange={handleChangeTopic}
+                  autoWidth
+                >
                 {allTopics.map((topic) => {
-                    return (
-                        <Chip
-                            key={topic.slug}
-                            label={topic.slug}
-                            onClick={() => {
-                            setIsDefault(false)
-                            setSelectedTopic(topic.slug);
-                            }}
-                            onDelete={() => {
-                            setSelectedTopic([]);
-                             }}
-                        />
-                    );
+                    return(
+                        <MenuItem value={topic.slug}>{topic.slug}</MenuItem>
+                    )
                 })}
-            <label>Sort by: </label>
-                <select onChange={handleChangeSortBy}>
-                    <option value='created_at'>Date</option>
-                    <option value='votes'>Votes</option>
-                    <option value='comment_count'>Comments</option>
-                </select>
-            <label>Order: </label>
-                <select onChange={handleChangeOrder}>
-                    <option value='desc'>Descending</option>
-                    <option value='asc'>Ascending</option>
-                </select>
-            <label>Results per page: </label>
-                <select onChange={handleChangeLimit}>
-                    <option value='10'>10</option>
-                    <option value='25'>25</option>
-                    <option value='50'>50</option>
-                    <option value='100'>100</option>
-                </select>
+                  
+                </Select>
+            </FormControl>
+
+            <FormControl sx={{ m: 1, minWidth: 80 }}>
+            <InputLabel>Sort By</InputLabel>
+                <Select
+                  value={selectedSortBy}
+                  label="Sort By"
+                  onChange={handleChangeSortBy}
+                  autoWidth
+                >
+                <MenuItem value="created_at">Date</MenuItem>
+                <MenuItem value="votes">Votes</MenuItem>
+                <MenuItem value="comment_count">Comments</MenuItem>
+                </Select>
+            </FormControl>
+            
+            <FormControl sx={{ m: 1, minWidth: 80 }}>
+            <InputLabel>Order</InputLabel>
+                <Select
+                  value={selectedOrder}
+                  label="Order"
+                  onChange={handleChangeOrder}
+                  autoWidth
+                >
+                <MenuItem value="desc">Descending</MenuItem>
+                <MenuItem value="asc">Ascending</MenuItem>
+                </Select>
+            </FormControl>
+
+            <FormControl sx={{ m: 1, minWidth: 150 }}>
+            <InputLabel>Results per page:</InputLabel>
+                <Select
+                  value={selectedLimit}
+                  label="Results per page"
+                  onChange={handleChangeLimit}
+                  autoWidth
+                >
+                <MenuItem value="10">10</MenuItem>
+                <MenuItem value="25">25</MenuItem>
+                <MenuItem value="50">50</MenuItem>
+                <MenuItem value="100">100</MenuItem>
+                </Select>
+            </FormControl>
+
+
+
+
                 {/* review conditional button rendering */}
 
                 {selectedPage === 1 && selectedArticles.length === selectedLimit ? 

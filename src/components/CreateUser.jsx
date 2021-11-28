@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import { UserContext } from '../contexts/User'
 import { postNewUser } from '../utils/api'
+import TextField from '@mui/material/TextField';
 
 export default function CreateUser() {
     const {setCurrUser, setIsLoggedIn, isLoggedIn} = useContext(UserContext)
@@ -14,7 +15,7 @@ export default function CreateUser() {
         event.preventDefault()
         postNewUser(newUsername, newName, newAvatarURL)
         .then((user)=>{
-            setCurrUser(user.username)
+            setCurrUser([user.username, user.avatar_url, user.name])
             setIsLoggedIn(true)
         })
     }
@@ -37,10 +38,13 @@ export default function CreateUser() {
         <>
         <div>
         <form onSubmit={handlePostUser}>
-        <input onChange={handleNewUsername}type="text" placeholder="Choose a username"></input>
-        <input onChange={handleNewName}type="text" placeholder="Enter your name"></input>
-        <input onChange={handleNewAvatarURL}type="text" placeholder="URL here"></input>
+        <TextField required label="Enter a username" onChange={handleNewUsername}/>
+        <TextField label="Enter a name" onChange={handleNewName}/>
+        <TextField label="Avatar URL" onChange={handleNewAvatarURL}/>
+        * Required
+        <p>
         <input type="submit" value="Submit"></input>
+        </p>
         </form>
         </div>
         </>

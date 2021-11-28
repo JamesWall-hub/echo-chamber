@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { UserContext } from "../contexts/User";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,7 @@ const Title = () => {
         setIsLoggedIn(false)
         setCurrUser([])
     }
+    const editLink = `edit_${currUser[0]}`
     
     return(
         <>
@@ -19,11 +20,21 @@ const Title = () => {
         <Link to="/users">
             <p>{currUser[0]}</p>
         </Link>
+        <Link to={editLink}>
+            <p>Edit user</p>
+        </Link>
         <button onClick={handleSignOut}>Sign out</button>
         </>
         :
-        <>  <Link to="/users">Sign in</Link>
-            <Link to="/create_user">Create user</Link> </>
+        <>  
+        <p>
+            <Link to="/users">Sign in</Link>
+        </p>
+        <p>
+            <Link to="/create_user">Create user</Link> 
+        </p>
+        </>
+
         }
         </div>
         </>
