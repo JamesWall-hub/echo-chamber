@@ -82,14 +82,13 @@ const CreatePost = () => {
 
             </div>
             :
-            <p>
-            <>
+            <div className="signInMessage">
             Please 
             <Link to="/users" style={{ textDecoration: 'none' }}> sign in </Link>
             or
             <Link to="/create_user" style={{ textDecoration: 'none' }}> create a user </Link>
-            to post an article.</>
-            </p>
+            to post an article.
+            </div>
             );
         }
 

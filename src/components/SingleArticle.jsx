@@ -31,15 +31,21 @@ const SingleArticle = () => {
     return(
         isDeleted ? <p>Article Deleted.</p> :
         <div>
-        <main className="SingleArticle">
+        <div className="SingleArticle">
         <p>/{topic}</p>
         <h3>{title}</h3>
         <ArticleBody author={author} currBody={currBody} setCurrBody={setCurrBody} handleDeleteArticle={handleDeleteArticle}/>
         {author ? <UserAndAvatar username={author}/>: null}
         <ArticleVoter article_id={article_id} currVotes={currVotes} setCurrVotes={setCurrVotes} author={author}/>
-        <p>Comments: {comment_count}</p>
-        <p>Created: {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}</p>
-        </main>
+        <p>
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-1024.png" />
+        {comment_count}
+        </p>
+        <p>
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" />
+        {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}
+        </p>
+        </div>
             <Comments />
         </div>
     )

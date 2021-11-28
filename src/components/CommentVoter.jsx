@@ -33,13 +33,13 @@ export default function CommentVoter({comment_id, votes, author}) {
             </button>
             </>
         :
-        <>
+        <div className="signInMessage">
         <p>Votes: {currVotes}</p>
         Please 
         <Link to="/users" style={{ textDecoration: 'none' }}> sign in </Link>
         or
         <Link to="/create_user" style={{ textDecoration: 'none' }}> create a user </Link>
         to vote.
-        </>
+        </div>
     )
 }

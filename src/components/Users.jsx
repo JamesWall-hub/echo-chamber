@@ -20,17 +20,19 @@ const Users = () => {
         isLoading ? <p>Loading...</p> :
         isLoggedIn ? <p>You are now signed in as {currUser[0]}!</p>
         :
-        allUsers.map((singleUser) => {
+        <div className="Users">
+        {allUsers.map((singleUser) => {
             return(
-                <>
+                <div className="UserCard">
                 <UserAndAvatar variant="outlined" key={singleUser.username} username={singleUser.username}/>
                 <Button variant="outlined" onClick={() => {
                     setCurrUser([singleUser.username, singleUser.avatar_url, singleUser.name])
                     setIsLoggedIn(true)
                 }}>Sign in as {singleUser.username}</Button>
-                </>
+                </div>
             )
-        })
+        })}
+        </div>
     )
 }
 

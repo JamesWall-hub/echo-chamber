@@ -146,32 +146,10 @@ const Articles = () => {
                 </Select>
             </FormControl>
 
-            {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
-
-
-                {/* review conditional button rendering */}
-
-                {selectedPage === 1 && selectedArticles.length === selectedLimit ? 
-                <>
-                <Button variant="outlined" onClick={handleNextPage}>Next Page</Button>
-                </> 
-                : null}
-
-                {selectedPage > 1 && selectedArticles.length === selectedLimit ? 
-                <>
-                <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
-                <Button variant="outlined" onClick={handleNextPage}>Next Page</Button>
-                </> 
-                : null}
-
-                {selectedPage > 1 && selectedArticles.length < selectedLimit ? 
-                <>
-                <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
-                </> 
-                : null}
+           
             
             </div>
-                
+            {isDefault ? <h3>Latest: </h3>: <h3>Results: </h3>}
 
             {isLoading ? <p>Loading...</p> : null}
             <ul className="ArticleList" style={{listStyleType: "none"}}>
@@ -192,6 +170,26 @@ const Articles = () => {
                 )
             })}
             </ul>
+            {/* review conditional button rendering */}
+
+            {selectedPage === 1 && selectedArticles.length === selectedLimit ? 
+                <>
+                <Button variant="outlined" onClick={handleNextPage}>Next Page</Button>
+                </> 
+                : null}
+
+                {selectedPage > 1 && selectedArticles.length === selectedLimit ? 
+                <>
+                <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
+                <Button variant="outlined" onClick={handleNextPage}>Next Page</Button>
+                </> 
+                : null}
+
+                {selectedPage > 1 && selectedArticles.length < selectedLimit ? 
+                <>
+                <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
+                </> 
+                : null}
         </div>
     )
 }

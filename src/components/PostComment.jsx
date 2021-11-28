@@ -31,11 +31,13 @@ export default function PostComment({setPostedComment}) {
         <Button onClick={handlePostComment} variant="outlined">Comment</Button>
         </>
         : 
-        <>Please 
+        <div className="signInMessage">
+        Please 
         <Link to="/users" style={{ textDecoration: 'none' }}> sign in </Link>
         or
         <Link to="/create_user" style={{ textDecoration: 'none' }}> create a user </Link>
-        to comment.</>
+        to comment.
+        </div>
         }
         </div>
     )
