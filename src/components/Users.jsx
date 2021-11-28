@@ -2,6 +2,7 @@ import { UserContext } from "../contexts/User"
 import { useContext, useEffect, useState } from "react"
 import { getAllUsers } from "../utils/api"
 import UserAndAvatar from "./UserAndAvatar"
+import Button from '@mui/material/Button';
 
 const Users = () => {
     const {setCurrUser, setIsLoggedIn, isLoggedIn, currUser} = useContext(UserContext)
@@ -22,11 +23,11 @@ const Users = () => {
         allUsers.map((singleUser) => {
             return(
                 <>
-                <UserAndAvatar key={singleUser.username} username={singleUser.username}/>
-                <button onClick={() => {
+                <UserAndAvatar variant="outlined" key={singleUser.username} username={singleUser.username}/>
+                <Button variant="outlined" onClick={() => {
                     setCurrUser([singleUser.username, singleUser.avatar_url, singleUser.name])
                     setIsLoggedIn(true)
-                }}>Sign in as {singleUser.username}</button>
+                }}>Sign in as {singleUser.username}</Button>
                 </>
             )
         })

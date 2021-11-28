@@ -28,8 +28,12 @@ export default function CommentBody({author, currBody, setCurrBody, comment_id, 
         isEditing ?
         <>
         <TextField label="Edit your comment" value={newBody} onChange={handleNewBody}/>
-        <button onClick={handlePatchComment}>Confirm</button>
-        <button onClick={handleCancel}>Cancel</button>
+        <button onClick={handlePatchComment}>
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes-3/3/36-1024.png" />
+        </button>
+        <button onClick={handleCancel}>
+        <img className="Icon" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-1/254000/45-1024.png"/>
+        </button>
         </>
         
         :
@@ -38,8 +42,12 @@ export default function CommentBody({author, currBody, setCurrBody, comment_id, 
 
         {currUser[0] === author ?
         <>
-        <button onClick={handleCommentBody}>Edit</button>
-        <button onClick={handleDeleteComment}>Delete</button>
+        <button onClick={handleCommentBody}>
+        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/35-1024.png"/>
+        </button>
+        <button onClick={handleDeleteComment}>
+        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/38-1024.png" />
+        </button>
         </>
         : null}
 

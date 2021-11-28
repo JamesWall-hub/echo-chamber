@@ -1,11 +1,13 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { UserContext } from '../contexts/User'
 import { patchUser } from '../utils/api'
 import TextField from '@mui/material/TextField';
+import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 export default function EditUser() {
-    const {currUser, setCurrUser} = useContext(UserContext)
+    const {currUser, setCurrUser, isLoggedIn} = useContext(UserContext)
     const [hasPatched, setHasPatched] = useState(false)
     const [newUsername, setNewUsername] = useState(currUser[0])
     const [newName, setNewName] = useState(currUser[2])
@@ -14,7 +16,8 @@ export default function EditUser() {
 
     const handlePatchUser = (event) => {
         event.preventDefault()
-        patchUser(currUser[0],{newUsername, newName, newAvatarURL})
+        const username = currUser[0]
+        patchUser({username, newUsername, newName, newAvatarURL})
         .then((user)=>{
             setHasPatched(true)
             setCurrUser([user.username, user.avatar_url, user.name])
@@ -33,20 +36,28 @@ export default function EditUser() {
         setNewAvatarURL(event.target.value)
     }
     return (
+        isLoggedIn ?
         hasPatched ?
         <p>Thanks, {newUsername} has been updated!</p>
         :
         <>
-        <div>
-        <form onSubmit={handlePatchUser}>
+        <div className="EditUser">
+        
         <TextField label="Enter a new username" value={newUsername} onChange={handleNewUsername}/>
         <TextField label="Enter a new name" value={newName} onChange={handleNewName}/>
         <TextField label="New avatar URL" value={newAvatarURL} onChange={handleNewAvatarURL}/>
         <p>
-        <input type="submit" value="Submit"></input>
+            <Button variant="outlined"onClick={handlePatchUser}>Edit user</Button>
         </p>
-        </form>
         </div>
         </>
+        :
+        <p>
+        <>Please 
+        <Link to="/users" style={{ textDecoration: 'none' }}> sign in </Link>
+        or
+        <Link to="/create_user" style={{ textDecoration: 'none' }}> create a user </Link>
+        to edit.</>
+        </p>
     )
 }

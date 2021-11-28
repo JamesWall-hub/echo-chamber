@@ -9,6 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 
 const CreatePost = () => {
@@ -55,8 +56,7 @@ const CreatePost = () => {
     return(
       isLoggedIn ?
         hasPosted ? <p>Article posted!</p> :
-            <>
-            <form onSubmit={handlePostArticle}>
+            <div className="CreatePost">
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
                 <InputLabel>Select an existing topic</InputLabel>
@@ -78,16 +78,18 @@ const CreatePost = () => {
             <TextField label="Create a new topic" onChange={handleNewTopic}/>
             <TextField label="Enter a title" onChange={handleNewTitle}/>
             <TextField label="Your article here" onChange={handleNewBody}/>
-            <input type="submit" value="Submit"></input>
-            </form>
-            </>
+            <Button variant="outlined" onClick={handlePostArticle}>Post</Button>
+
+            </div>
             :
+            <p>
             <>
             Please 
-            <Link to="/users"> sign in </Link>
+            <Link to="/users" style={{ textDecoration: 'none' }}> sign in </Link>
             or
-            <Link to="/create_user"> create a user </Link>
+            <Link to="/create_user" style={{ textDecoration: 'none' }}> create a user </Link>
             to post an article.</>
+            </p>
             );
         }
 

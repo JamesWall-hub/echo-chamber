@@ -20,7 +20,6 @@ export default function Comments() {
         limit: commentLimit,
     }
     useEffect(()=>{
-        console.log("rendering")
         getCommentsByArticle(article_id, commentParams)
         .then((comments) => {
             setDislayedComments(comments)
@@ -39,8 +38,10 @@ export default function Comments() {
 
     return (
         <>
-        <div className="Comments">
+        <div className="PostComment">
         <PostComment setPostedComment={setPostedComment}/>
+        </div>
+        <div className="Comments">
         <h3>Comments: </h3>
 
             <FormControl sx={{ m: 1, minWidth: 80 }}>
@@ -56,7 +57,6 @@ export default function Comments() {
                 </Select>
             </FormControl>
 
-        </div>
         <ul className="CommentList" style={{listStyleType: "none"}}>
             {displayedComments.map((comment) => {
                 const {comment_id, author, body, votes, created_at} = comment
@@ -77,6 +77,7 @@ export default function Comments() {
             <button onClick={handleMoreComments}>Load more</button>
         :   null
         }
+        </div>
         </>
     )
 }

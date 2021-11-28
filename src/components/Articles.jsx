@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const Articles = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -28,7 +29,6 @@ const Articles = () => {
     };
     useEffect(()=>{
         setSelectedArticles([])
-        console.log("rendering")
         setIsLoading(true)
 
         getAllTopics()
@@ -83,8 +83,7 @@ const Articles = () => {
 
     return(
         <div className="Articles">
-            {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
-            <div className="controls">
+            <div className="Controls">
 
             <TextField label="Search by title" onChange={handleChangeTitle}/>
 
@@ -147,27 +146,27 @@ const Articles = () => {
                 </Select>
             </FormControl>
 
-
+            {isDefault ? <h2>Latest: </h2>: <h2>Results: </h2>}
 
 
                 {/* review conditional button rendering */}
 
                 {selectedPage === 1 && selectedArticles.length === selectedLimit ? 
                 <>
-                <button onClick={handleNextPage}>Next Page</button>
+                <Button variant="outlined" onClick={handleNextPage}>Next Page</Button>
                 </> 
                 : null}
 
                 {selectedPage > 1 && selectedArticles.length === selectedLimit ? 
                 <>
-                <button onClick={handlePrevPage}>Previous Page</button>
-                <button onClick={handleNextPage}>Next Page</button>
+                <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
+                <Button variant="outlined" onClick={handleNextPage}>Next Page</Button>
                 </> 
                 : null}
 
                 {selectedPage > 1 && selectedArticles.length < selectedLimit ? 
                 <>
-                <button onClick={handlePrevPage}>Previous Page</button>
+                <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
                 </> 
                 : null}
             

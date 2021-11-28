@@ -3,14 +3,14 @@ import {Link} from "react-router-dom"
 const Nav = () => {
     return(
         <nav className="Nav">
-            <Link to={"/"}>
-                <h2>Home</h2>
+            <Link to={"/"} style={{ textDecoration: 'none' }}>
+                <h3>Home</h3>
+            </Link >
+            <Link to={"articles"} style={{ textDecoration: 'none' }}>
+                <h3>Articles</h3>
             </Link>
-            <Link to={"articles"}>
-                <h2>Articles</h2>
-            </Link>
-            <Link to={"create_post"}>
-                <h2>Create post</h2>
+            <Link to={"create_post"} style={{ textDecoration: 'none' }}>
+                <h3>Create post</h3>
             </Link>
         </nav>
     )

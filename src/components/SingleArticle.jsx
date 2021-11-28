@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticleById } from "../utils/api"
 import ArticleVoter from "./ArticleVoter"
@@ -15,7 +15,6 @@ const SingleArticle = () => {
     const [isDeleted, setIsDeleted] = useState(false)
 
     useEffect(() => {
-        console.log("rendering")
         getArticleById(article_id)
         .then((article) => {
             setCurrentArticle(article)

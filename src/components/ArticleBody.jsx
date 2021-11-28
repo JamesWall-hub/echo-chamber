@@ -30,8 +30,12 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
         isEditing ?
         <>
         <TextField label="Edit your article" value={newBody} onChange={handleNewBody}/>
-        <button onClick={handlePatchArticle}>Confirm</button>
-        <button onClick={handleCancel}>Cancel</button>
+        <button onClick={handlePatchArticle}>
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes-3/3/36-1024.png" />
+        </button>
+        <button onClick={handleCancel}>
+        <img className="Icon" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-1/254000/45-1024.png"/>
+        </button>
         </>
         
         :
@@ -40,8 +44,12 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
 
         {currUser[0] === author ?
         <>
-        <button onClick={handleArticleBody}>Edit</button>
-        <button onClick={handleDeleteArticle}>Delete</button>
+        <button onClick={handleArticleBody}>
+        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/35-1024.png"/>
+        </button>
+        <button onClick={handleDeleteArticle}>
+        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/38-1024.png" />
+        </button>
         </>
         : null}
 

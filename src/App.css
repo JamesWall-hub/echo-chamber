@@ -21,9 +21,12 @@ body {
 }
 
 .Title{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 10fr 1fr;
+  grid-template-areas: "title user";
   text-align: center;
   border: solid blue 1px;
-  grid-area: Title;
 }
 
 .Nav{
@@ -40,7 +43,33 @@ body {
 }
 
 .ArticleCard{
-  border: solid red 1px;
+  box-shadow: darkgray 10px 5px 10px;
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 1fr, min-content, 1fr, 1fr;
+  grid-template-columns: 1fr, 1fr, 1fr;
+  grid-template-areas:
+   "topic" 
+   "title" 
+   "user" 
+   "info";
+  /* border: solid red 1px; */
+}
+
+.ArticleCardTopic{
+  margin: 1px;
+  grid-area: topic;
+}
+.ArticleCardTitle{
+  grid-area: title;
+}
+
+.ArticleCardInfo{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  grid-area: info;
 }
 
 .ArticleList{
@@ -48,21 +77,55 @@ body {
 }
 
 .CommentList{
-  padding: 0;
+  padding: 15px;
 }
 
-.controls{
+.Controls{
   border: solid green 1px;
 }
 
 .SingleArticle{
+  padding: 10px;
   border: solid coral 1px;
 }
-
+.Comments{
+  border: solid lime 1px
+}
 .CommentCard{
+  padding: 10px;
   border: solid pink 1px;
+  box-shadow: darkgray 10px 5px 10px;
 }
 
 .PostComment{
+  padding: 10px;
   border: solid turquoise 1px;
+}
+
+.CreatePost{
+  border: solid darkblue 1px;
+}
+
+.UserTitle{
+  border: solid darkcyan 1px;
+}
+
+.EditUser{
+  border: solid darkmagenta 1px;
+}
+
+.CreateUser{
+  border: solid darkorange 1px;
+}
+
+.UserAndAvatar{
+  font: bold;
+  border: solid seagreen 1px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.Icon{
+  width:25px;
+  height:25px;
 }
