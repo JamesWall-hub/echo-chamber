@@ -38,10 +38,9 @@ export default function CreateUser() {
         :
         <>
         <div className="CreateUser">
-        <TextField required label="Enter a username" onChange={handleNewUsername}/>
+        <TextField required label="Enter a username" onChange={handleNewUsername} helperText="Required"/>
         <TextField label="Enter a name" onChange={handleNewName}/>
         <TextField label="Avatar URL" onChange={handleNewAvatarURL}/>
-        * Required
         <p>
         <Button variant="outlined"onClick={handlePostUser}>Create user</Button>
         </p>

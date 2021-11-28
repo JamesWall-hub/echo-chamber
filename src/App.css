@@ -21,7 +21,6 @@ img{
 }
 
 body {
-  margin: 5;
   font-family: 'Spartan', sans-serif;
 }
 
@@ -42,9 +41,6 @@ a {
   color: #0077b6;;
   
 }
-a:hover {
-   color: grey;
-}
 
 .Nav{
   text-align: center;
@@ -63,18 +59,13 @@ a:hover {
 .ArticleList{
   align-items: center;
   padding: 0px;
-  display: block;
 }
-
-li{
-  align-items: center;
-}
-
 .ArticleCard{
+  text-align: center;
   color: black;
   box-shadow: darkgray 10px 5px 10px;
   padding: 10px;
-  margin: 5px;
+  margin: auto;
   display: grid;
   grid-template-rows: 1fr, min-content, 1fr, 1fr;
   grid-template-columns: 1fr, 1fr, 1fr;
@@ -84,6 +75,7 @@ li{
    "user" 
    "info";
   max-width: 700px;
+  min-width: auto;
   border-radius: 5px;
 }
 
@@ -102,11 +94,29 @@ li{
   grid-area: info;
 }
 
+.ArticleCardVotes{
+  display: flex;
+  align-items: center;
+}
+
+.ArticleCardComments{
+  display: flex;
+  align-items: center;
+}
+
+.ArticleCardDate{
+  display: flex;
+  align-items: center;
+}
+
 .CommentList{
+  align-items: center;
   padding: 15px;
 }
 
 .Controls{
+  resize: both;
+  overflow: auto;
   display: flex;
   flex-wrap:wrap;
   justify-content: space-evenly;
@@ -120,6 +130,7 @@ li{
   box-shadow: darkgray 10px 5px 10px;
 }
 .CommentCard{
+  margin: auto;
   border-radius: 5px;
   padding: 10px;
   box-shadow: darkgray 10px 5px 10px;
@@ -133,8 +144,9 @@ li{
 }
 
 .CreatePost{
+  align-items: center;
+  justify-content: center;
   display: grid;
-  border: solid darkblue 1px;
 }
 
 .UserCard{
@@ -146,21 +158,23 @@ li{
 }
 
 .Users{
-  margin: 10px;
+  margin: 5px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .EditUser{
+  align-items: center;
+  justify-content: center;
   display: grid;
-  border: solid darkmagenta 1px;
 }
 
 .CreateUser{
+  align-items: center;
+  justify-content: center;
   display: grid;
-  border: solid darkorange 1px;
 }
 
 .UserAndAvatar{
@@ -171,8 +185,8 @@ li{
 }
 
 .Icon{
-  width:25px;
-  height:25px;
+  width:20px;
+  height:20px;
 }
 
 .signInMessage{
