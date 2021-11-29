@@ -5,7 +5,7 @@ import UserAndAvatar from "./UserAndAvatar"
 import Button from '@mui/material/Button';
 
 const Users = () => {
-    const {setCurrUser, setIsLoggedIn, isLoggedIn, currUser} = useContext(UserContext)
+    const {setCurrUser, currUser} = useContext(UserContext)
     const [allUsers, setAllUsers] = useState([])
     const [isLoading, setIsLoading] = useState([])
     useEffect(() => {
@@ -18,7 +18,7 @@ const Users = () => {
     }, [])
     return (
         isLoading ? <p>Loading...</p> :
-        isLoggedIn ? <p>You are now signed in as {currUser[0]}!</p>
+        !!currUser ? <p>You are now signed in as {currUser.username}!</p>
         :
         <div className="Users">
         {allUsers.map((singleUser) => {
@@ -26,8 +26,7 @@ const Users = () => {
                 <div className="UserCard">
                 <UserAndAvatar variant="outlined" key={singleUser.username} username={singleUser.username}/>
                 <Button variant="outlined" onClick={() => {
-                    setCurrUser([singleUser.username, singleUser.avatar_url, singleUser.name])
-                    setIsLoggedIn(true)
+                    setCurrUser(singleUser)
                 }}>Sign in as {singleUser.username}</Button>
                 </div>
             )

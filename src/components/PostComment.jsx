@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 export default function PostComment({setPostedComment}) {
     const { article_id } = useParams()
     const [commentBody, setCommentBody] = useState("")
-    const {currUser, isLoggedIn} = useContext(UserContext)
+    const {currUser} = useContext(UserContext)
 
     const handleCommentBody = (event) => {
         setCommentBody(event.target.value)
@@ -18,15 +18,17 @@ export default function PostComment({setPostedComment}) {
     const handlePostComment = (event) => {
         event.preventDefault()
         postNewComment(article_id, currUser[0], commentBody)
-        .then(() => {
-            setPostedComment([])
-        }) //triggers rerender of comments
+        .then((comment) => {
+            setPostedComment((prev) => {
+                return [comment,...prev]
+            })
+        })
     }
     return (
     <div className="PostComment">
-        {isLoggedIn ?
+        {!!currUser ?
         <>
-        <UserAndAvatar username={currUser[0]}/>
+        <UserAndAvatar username={currUser.username}/>
         <TextField label="Post a comment" onChange={handleCommentBody}/>
         <Button onClick={handlePostComment} variant="outlined">Comment</Button>
         </>

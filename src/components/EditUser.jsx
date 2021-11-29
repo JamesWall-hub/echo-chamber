@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 export default function EditUser() {
-    const {currUser, setCurrUser, isLoggedIn} = useContext(UserContext)
+    const {currUser, setCurrUser} = useContext(UserContext)
     const [hasPatched, setHasPatched] = useState(false)
     const [newUsername, setNewUsername] = useState([])
     const [newName, setNewName] = useState([])
@@ -15,19 +15,19 @@ export default function EditUser() {
 
 
     useEffect(() => {
-        setNewUsername(currUser[0])
-        setNewName(currUser[2])
-        setNewAvatarURL(currUser[1])
+        setNewUsername(currUser.username)
+        setNewName(currUser.name)
+        setNewAvatarURL(currUser.avatar_url)
     }, [])
 
 
     const handlePatchUser = (event) => {
         event.preventDefault()
-        const username = currUser[0]
+        const username = currUser.username
         patchUser({username, newUsername, newName, newAvatarURL})
         .then((user)=>{
             setHasPatched(true)
-            setCurrUser([user.username, user.avatar_url, user.name])
+            setCurrUser(user)
         })
     }
 
@@ -43,7 +43,7 @@ export default function EditUser() {
         setNewAvatarURL(event.target.value)
     }
     return (
-        isLoggedIn ?
+        !!currUser ?
         hasPatched ?
         <p>Thanks, {newUsername} has been updated!</p>
         :

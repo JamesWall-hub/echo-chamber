@@ -24,7 +24,7 @@ export default function Comments() {
         .then((comments) => {
             setDislayedComments(comments)
         })
-    }, [sortComments, commentLimit, postedComment])
+    }, [sortComments, commentLimit, commentParams])
 
     const handleChangeSortBy = (event) => {
         setSortComments(event.target.value);

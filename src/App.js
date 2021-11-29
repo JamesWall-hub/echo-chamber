@@ -13,11 +13,10 @@ import CreatePost from "./components/CreatePost"
 import EditUser from "./components/EditUser"
 
 const App = () => {
-  const [currUser, setCurrUser] = useState([])
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [currUser, setCurrUser] = useState()
   return (
     <BrowserRouter>
-    <UserContext.Provider value={{currUser, setCurrUser, isLoggedIn, setIsLoggedIn}}>
+    <UserContext.Provider value={{currUser, setCurrUser}}>
     <div className="App">
     <Title />
     <Nav />

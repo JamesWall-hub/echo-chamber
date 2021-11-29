@@ -13,17 +13,20 @@ import Button from '@mui/material/Button';
 
 
 const CreatePost = () => {
-    const {currUser, isLoggedIn} = useContext(UserContext)
+    const {currUser} = useContext(UserContext)
     const [isNewTopic, setIsNewTopic] = useState(false)
     const [allTopics, setAllTopics] = useState([])
+    const [isLoadingTopics, setIsLoadingTopics] = useState(false)
     const [selectedTopic, setSelectedTopic] = useState([])
     const [newTitle, setNewTitle] = useState([])
     const [newBody, setNewBody] = useState([])
     const [hasPosted, setHasPosted] = useState(false)
     useEffect(() => {
+      setIsLoadingTopics(true)
         getAllTopics()
         .then((topicsFromServer) => {
             setAllTopics(topicsFromServer)
+            setIsLoadingTopics(false)
         })
     }, [])
 
@@ -46,17 +49,19 @@ const CreatePost = () => {
       isNewTopic ?
       postTopic({topic_slug: selectedTopic})
       .then(() => {
-        postArticle({author: currUser[0], title: newTitle, topic: selectedTopic, body: newBody})
+        postArticle({author: currUser.username, title: newTitle, topic: selectedTopic, body: newBody})
         setHasPosted(true)
       })
       :
-      postArticle({author: currUser[0], title: newTitle, topic: selectedTopic, body: newBody})
+      postArticle({author: currUser.username, title: newTitle, topic: selectedTopic, body: newBody})
       setHasPosted(true)
   }
     return(
-      isLoggedIn ?
+      !!currUser ?
         hasPosted ? <p>Article posted!</p> :
             <div className="CreatePost">
+            {isLoadingTopics ? <p>Loading topics...</p>
+            :
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
                 <InputLabel>Select an existing topic</InputLabel>
@@ -73,7 +78,7 @@ const CreatePost = () => {
                   
                 </Select>
               </FormControl>
-            </Box>
+            </Box>}
             <p>Or</p>
             <TextField label="Create a new topic" onChange={handleNewTopic}/>
             <TextField label="Enter a title" onChange={handleNewTitle}/>

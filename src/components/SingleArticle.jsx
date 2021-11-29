@@ -38,11 +38,11 @@ const SingleArticle = () => {
         {author ? <UserAndAvatar username={author}/>: null}
         <ArticleVoter article_id={article_id} currVotes={currVotes} setCurrVotes={setCurrVotes} author={author}/>
         <div className="SingleArticleComments">
-        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-1024.png" />
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-1024.png" alt="comments"/>
         {comment_count}
         </div>
         <div className="SingleArticleDate">
-        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" />
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" alt="date"/>
         {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}
         </div>
         </div>

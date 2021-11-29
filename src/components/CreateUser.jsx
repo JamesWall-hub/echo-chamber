@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 export default function CreateUser() {
-    const {setCurrUser, setIsLoggedIn, isLoggedIn} = useContext(UserContext)
+    const {currUser, setCurrUser} = useContext(UserContext)
     const [newUsername, setNewUsername] = useState([])
     const [newName, setNewName] = useState([])
     const [newAvatarURL, setNewAvatarURL] = useState([])
@@ -16,8 +16,7 @@ export default function CreateUser() {
         event.preventDefault()
         postNewUser(newUsername, newName, newAvatarURL)
         .then((user)=>{
-            setCurrUser([user.username, user.avatar_url, user.name])
-            setIsLoggedIn(true)
+            setCurrUser(user)
         })
     }
 
@@ -33,7 +32,7 @@ export default function CreateUser() {
         setNewAvatarURL(event.target.value)
     }
     return (
-        isLoggedIn ?
+        !!currUser ?
         <p>Thanks, you are now signed in as {newUsername}!</p>
         :
         <>

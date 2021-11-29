@@ -15,16 +15,14 @@ const ArticleCard = ({article_id, title, author, topic, votes, comment_count, cr
         </div>
         <div className="ArticleCardInfo">
         <div className="ArticleCardVotes">
-        <img className="Icon" src="https://cdn4.iconfinder.com/data/icons/flat-design-multimedia-set-2/24/btn-blue-arrow-up-1024.png" />
-        <img className="Icon" src="https://cdn4.iconfinder.com/data/icons/flat-pro-multimedia-set-1/32/btn-blue-arrow-down-1024.png" />
-        {votes}
+        Votes: {votes}
         </div>
         <div className="ArticleCardComments">
-        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-1024.png" />
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-1024.png" alt="comments" />
         {comment_count}
         </div>
         <div className="ArticleCardDate">
-        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" />
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" alt="date"/>
         {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}
         </div>
         </div>

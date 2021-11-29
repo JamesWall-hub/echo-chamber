@@ -4,7 +4,7 @@ import { UserContext } from '../contexts/User'
 import { voteComment } from '../utils/api'
 
 export default function CommentVoter({comment_id, votes, author}) {
-    const {currUser, isLoggedIn} = useContext(UserContext)
+    const {currUser} = useContext(UserContext)
     const [currVotes, setCurrVotes] = useState(votes)
     const handleVoteUp = () => {
         setCurrVotes((prev) => {
@@ -19,17 +19,17 @@ export default function CommentVoter({comment_id, votes, author}) {
         voteComment(comment_id, -1)
     }
     return (
-        isLoggedIn ?
-            author === currUser[0] ? 
+        !!currUser ?
+            author === currUser.username ? 
             <p>Votes: {currVotes}</p>
             :
             <>
             <p>Votes: {currVotes}</p>
             <button onClick={handleVoteUp}>
-            <img className="Icon" src="https://cdn4.iconfinder.com/data/icons/flat-design-multimedia-set-2/24/btn-blue-arrow-up-1024.png" />
+            <img className="Icon" src="https://cdn4.iconfinder.com/data/icons/flat-design-multimedia-set-2/24/btn-blue-arrow-up-1024.png" alt="vote up"/>
             </button>
             <button onClick={handleVoteDown}>
-            <img className="Icon" src="https://cdn4.iconfinder.com/data/icons/flat-pro-multimedia-set-1/32/btn-blue-arrow-down-1024.png" />
+            <img className="Icon" src="https://cdn4.iconfinder.com/data/icons/flat-pro-multimedia-set-1/32/btn-blue-arrow-down-1024.png" alt="vote down"/>
             </button>
             </>
         :

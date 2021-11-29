@@ -22,7 +22,7 @@ const CommentCard = ({comment_id, author, body, votes, created_at}) => {
         <UserAndAvatar username={author}/>
         <CommentVoter comment_id={comment_id} votes={votes} author={author}/>
         <div className="CommentCardDate">
-        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" />
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" alt="date"/>
         {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}
         </div>
         </div>

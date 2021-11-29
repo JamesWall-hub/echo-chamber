@@ -31,10 +31,10 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
         <>
         <TextField label="Edit your article" value={newBody} onChange={handleNewBody}/>
         <button onClick={handlePatchArticle}>
-        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes-3/3/36-1024.png" />
+        <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes-3/3/36-1024.png" alt="confirm" />
         </button>
         <button onClick={handleCancel}>
-        <img className="Icon" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-1/254000/45-1024.png"/>
+        <img className="Icon" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-1/254000/45-1024.png" alt="cancel"/>
         </button>
         </>
         
@@ -42,15 +42,17 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
         <div>
         <p>{currBody}</p>
 
-        {currUser[0] === author ?
+        {!!currUser ?
+        currUser.username === author ?
         <>
         <button onClick={handleArticleBody}>
-        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/35-1024.png"/>
+        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/35-1024.png" alt="edit"/>
         </button>
         <button onClick={handleDeleteArticle}>
-        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/38-1024.png" />
+        <img className="Icon" src="https://cdn3.iconfinder.com/data/icons/social-messaging-ui-color-line/254000/38-1024.png" alt="delete" />
         </button>
         </>
+        : null
         : null}
 
         </div>

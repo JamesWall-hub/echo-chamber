@@ -6,7 +6,6 @@ const Home = () => {
     const [popularArticles, setPopularArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     useEffect(()=>{
-        console.log("rendering")
         setIsLoading(true)
         getPopularArticles()
         .then((articlesFromServer)=>{

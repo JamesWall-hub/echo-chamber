@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
 const Title = () => {
-    const {currUser, setCurrUser, isLoggedIn, setIsLoggedIn} = useContext(UserContext)
+    const {currUser, setCurrUser} = useContext(UserContext)
     const handleSignOut = () => {
-        setIsLoggedIn(false)
-        setCurrUser([])
+        setCurrUser()
     }
     
     return(
@@ -15,11 +14,11 @@ const Title = () => {
         <div className="Title">
             <h1>Echo Chamber</h1>
         <div className="UserTitle">
-        {isLoggedIn ?
+        {!!currUser ?
         <>
-        <img src={currUser[1]}></img>
+        <img alt={currUser.username} src={currUser.avatar_url}></img>
         <Link to="/users" style={{ textDecoration: 'none' }}>
-            <p>{currUser[0]}</p>
+            <p>{currUser.username}</p>
         </Link>
         <Link to="edit_user" style={{ textDecoration: 'none' }}>
             <p>Edit user</p>

@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 
 const Articles = () => {
     const [isLoading, setIsLoading] = useState(false)
+    const [isLoadingTopics, setIsLoadingTopics] = useState(false)
     const [isDefault, setIsDefault] = useState(true)
     const [selectedArticles, setSelectedArticles] = useState([])
     const [allTopics, setAllTopics] = useState([])
@@ -19,28 +20,35 @@ const Articles = () => {
     const [selectedTitle, setSelectedTitle] = useState([])
     const [selectedPage, setSelectedPage] = useState(1)
     const [selectedLimit, setSelectedLimit] = useState(10)
-    const params = {
-        topic: selectedTopic,
-        order: selectedOrder,
-        sort_by: selectedSortBy,
-        title: selectedTitle,
-        p: selectedPage,
-        limit: selectedLimit
-    };
+
     useEffect(()=>{
+        const params = {
+            topic: selectedTopic,
+            order: selectedOrder,
+            sort_by: selectedSortBy,
+            title: selectedTitle,
+            p: selectedPage,
+            limit: selectedLimit
+        };
+        
         setSelectedArticles([])
         setIsLoading(true)
 
-        getAllTopics()
-        .then((topicsFromServer) => {
-            setAllTopics(topicsFromServer)
-        })
         getAllArticles(params)
         .then((articlesFromServer)=>{
             setIsLoading(false)
             setSelectedArticles(articlesFromServer)
         })
     }, [selectedOrder, selectedSortBy, selectedTopic, selectedTitle, selectedPage, selectedLimit])
+
+    useEffect(() => {
+        setIsLoadingTopics(true)
+        getAllTopics()
+        .then((topicsFromServer) => {
+            setAllTopics(topicsFromServer)
+            setIsLoadingTopics(false)
+        })
+    }, [])
 
     const handleChangeOrder = (event) => {
         setSelectedPage(1)
@@ -71,13 +79,13 @@ const Articles = () => {
 
     const handleNextPage = () => {
         setSelectedPage((prev) => {
-            return prev+=1
+            return prev + 1
         });
     };
 
     const handlePrevPage = () => {
         setSelectedPage((prev) => {
-            return prev > 1 ? prev-=1 : 1
+            return prev > 1 ? prev - 1 : 1
         });
     };
 
@@ -87,6 +95,8 @@ const Articles = () => {
 
             <TextField label="Search by title" onChange={handleChangeTitle}/>
 
+
+            {isLoadingTopics ? <p>Loading topics...</p> :
             <FormControl sx={{ m: 1, minWidth: 80 }}>
             <InputLabel>Topic</InputLabel>
                 <Select
@@ -102,7 +112,7 @@ const Articles = () => {
                 })}
                   
                 </Select>
-            </FormControl>
+            </FormControl>}
 
             <FormControl sx={{ m: 1, minWidth: 80 }}>
             <InputLabel>Sort By</InputLabel>
