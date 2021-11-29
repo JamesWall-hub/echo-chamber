@@ -88,6 +88,7 @@ a {
 }
 
 .ArticleCardInfo{
+  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -129,12 +130,25 @@ a {
   padding: 10px;
   box-shadow: darkgray 10px 5px 10px;
 }
+.SingleArticleComments{
+  display: flex;
+  align-items: center;
+}
+.SingleArticleDate{
+  display: flex;
+  align-items: center;
+}
 .CommentCard{
   margin: auto;
   border-radius: 5px;
   padding: 10px;
   box-shadow: darkgray 10px 5px 10px;
   max-width: 500px;
+}
+
+.CommentCardDate{
+  display: flex;
+  align-items: center;
 }
 
 .PostComment{
@@ -185,8 +199,8 @@ a {
 }
 
 .Icon{
-  width:20px;
-  height:20px;
+  width:30px;
+  height:30px;
 }
 
 .signInMessage{

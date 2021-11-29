@@ -37,14 +37,14 @@ const SingleArticle = () => {
         <ArticleBody author={author} currBody={currBody} setCurrBody={setCurrBody} handleDeleteArticle={handleDeleteArticle}/>
         {author ? <UserAndAvatar username={author}/>: null}
         <ArticleVoter article_id={article_id} currVotes={currVotes} setCurrVotes={setCurrVotes} author={author}/>
-        <p>
+        <div className="SingleArticleComments">
         <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/chat-circle-blue-1024.png" />
         {comment_count}
-        </p>
-        <p>
+        </div>
+        <div className="SingleArticleDate">
         <img className="Icon" src="https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/calendar-circle-blue-1024.png" />
         {created_at ? created_at.slice(0,10).split("-").reverse().join("-"):null}
-        </p>
+        </div>
         </div>
             <Comments />
         </div>
