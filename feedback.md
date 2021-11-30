@@ -4,15 +4,22 @@
 
 - [ ] has a link to the deployed version
 - [ ] provides general info about your app
-- [ ] includes links to your back end repo
+- [ ] includes link to your back end repo
 - [ ] specifies the minimum version of Node required to run locally (check your Node version, `node --version` and use the major version that you are on)
 - [ ] has clear instructions on how to run your project locally (`git clone <repo-url>, cd ...`)
 
 ## UX
-
-- [ ] Tweak padding and margin to make sure everything feels like it has enough "space to breathe"
 - [ ] Refreshing doesn’t cause an issue on sub-pages (check on hosted version)
 - [ ] No errors in the console
+
+## Error Handling
+
+- [ ] Bad url
+- [ ] Bad article id in url
+- [ ] Post comment: No text in comment body
+- [ ] Post new article gives "article posted" with no details filled in
+- [ ] Update user fails but gives positive feedback
+- [ ] Make sure _every_ network request has a `.catch` block which acts to indicate to the user when something has gone wrongs
 
 ## Functionality
 
@@ -23,15 +30,6 @@
 ### Individual Article / Comments
 
 - [ ] Can vote a maximum of once in either direction per page load
-
-## Error Handling
-
-- [ ] Bad url
-- [ ] Bad article id in url
-- [ ] Post comment: No text in comment body
-- [ ] Post new article gives "article posted" with no details filled in
-- [ ] Update user fails but gives positive feedback
-- [ ] Make sure _every_ network request has a `.catch` block which acts to indicate to the user when something has gone wrong
 
 ## Code
 
