@@ -21,6 +21,7 @@ img{
 }
 
 body {
+  margin: auto;
   font-family: 'Spartan', sans-serif;
 }
 
@@ -35,7 +36,6 @@ body {
 
 a {
   color: #0077b6;;
-  
 }
 
 .Nav{
@@ -48,10 +48,16 @@ a {
 }
 
 .Home{
+  margin: auto;
+  max-width: 900px;
   align-items: center;
   grid-area: Main;
 }
 
+.Articles{
+  margin: auto;
+  max-width: 900px;
+}
 .ArticleList{
   align-items: center;
   padding: 0px;
@@ -60,8 +66,8 @@ a {
   text-align: center;
   color: black;
   box-shadow: darkgray 10px 5px 10px;
-  padding: 10px;
-  margin: auto;
+  padding: 20px;
+  margin: 10px auto;
   display: grid;
   grid-template-rows: 1fr, min-content, 1fr, 1fr;
   grid-template-columns: 1fr, 1fr, 1fr;
@@ -105,13 +111,18 @@ a {
   display: flex;
   align-items: center;
 }
-
+.Comments{
+  margin:auto;
+  max-width: 500px;
+}
 .CommentList{
   align-items: center;
   padding: 15px;
 }
 
 .Controls{
+  margin: auto;
+  max-width: 900px;
   resize: both;
   overflow: auto;
   display: flex;
@@ -121,10 +132,10 @@ a {
 }
 
 .SingleArticle{
+  padding: 20px;
+  margin: 10px auto;
   max-width: 700px;
   border-radius: 5px;
-  margin: auto;
-  padding: 10px;
   box-shadow: darkgray 10px 5px 10px;
 }
 .SingleArticleComments{
@@ -136,9 +147,9 @@ a {
   align-items: center;
 }
 .CommentCard{
-  margin: auto;
+  padding: 20px;
+  margin: 10px auto;
   border-radius: 5px;
-  padding: 10px;
   box-shadow: darkgray 10px 5px 10px;
   max-width: 500px;
 }
@@ -155,6 +166,8 @@ a {
 }
 
 .CreatePost{
+  max-width: 900px;
+  margin: auto;
   align-items: center;
   justify-content: center;
   display: grid;
@@ -198,8 +211,12 @@ a {
 .Icon{
   width:30px;
   height:30px;
+  margin: 5px;
+  margin-bottom: 10px;
 }
 
 .signInMessage{
+  padding: 5px;
+  margin: auto;
   color: black;
 }
