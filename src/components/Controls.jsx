@@ -71,61 +71,61 @@ export default function Controls({
 
         {isLoadingTopics ? <p>Loading topics...</p> :
         <FormControl sx={{ m: 1, minWidth: 80 }}>
-        <InputLabel>Topic</InputLabel>
-            <Select
-              value={selectedTopic}
-              label="Topic"
-              onChange={handleChangeTopic}
-              autoWidth
-            >
+            <InputLabel>Topic</InputLabel>
+                <Select
+                    value={selectedTopic}
+                    label="Topic"
+                    onChange={handleChangeTopic}
+                    autoWidth
+                >
             {allTopics.map((topic) => {
                 return(
                     <MenuItem value={topic.slug}>{topic.slug}</MenuItem>
                 )
             })}
               
-            </Select>
+                </Select>
         </FormControl>}
 
         <FormControl sx={{ m: 1, minWidth: 80 }}>
-        <InputLabel>Sort By</InputLabel>
-            <Select
-              value={selectedSortBy}
-              label="Sort By"
-              onChange={handleChangeSortBy}
-              autoWidth
-            >
-            <MenuItem value="created_at">Date</MenuItem>
-            <MenuItem value="votes">Votes</MenuItem>
-            <MenuItem value="comment_count">Comments</MenuItem>
+            <InputLabel>Sort By</InputLabel>
+                <Select
+                value={selectedSortBy}
+                label="Sort By"
+                onChange={handleChangeSortBy}
+                autoWidth
+                >
+                <MenuItem value="created_at">Date</MenuItem>
+                <MenuItem value="votes">Votes</MenuItem>
+                <MenuItem value="comment_count">Comments</MenuItem>
             </Select>
         </FormControl>
         
         <FormControl sx={{ m: 1, minWidth: 80 }}>
-        <InputLabel>Order</InputLabel>
-            <Select
-              value={selectedOrder}
-              label="Order"
-              onChange={handleChangeOrder}
-              autoWidth
-            >
-            <MenuItem value="desc">Descending</MenuItem>
-            <MenuItem value="asc">Ascending</MenuItem>
-            </Select>
+            <InputLabel>Order</InputLabel>
+                <Select
+                value={selectedOrder}
+                label="Order"
+                onChange={handleChangeOrder}
+                autoWidth
+                >
+                    <MenuItem value="desc">Descending</MenuItem>
+                    <MenuItem value="asc">Ascending</MenuItem>
+                </Select>
         </FormControl>
 
         <FormControl sx={{ m: 1, minWidth: 150 }}>
         <InputLabel>Results per page:</InputLabel>
             <Select
-              value={selectedLimit}
-              label="Results per page"
-              onChange={handleChangeLimit}
-              autoWidth
+                value={selectedLimit}
+                label="Results per page"
+                onChange={handleChangeLimit}
+                autoWidth
             >
-            <MenuItem value="10">10</MenuItem>
-            <MenuItem value="25">25</MenuItem>
-            <MenuItem value="50">50</MenuItem>
-            <MenuItem value="100">100</MenuItem>
+                <MenuItem value="10">10</MenuItem>
+                <MenuItem value="25">25</MenuItem>
+                <MenuItem value="50">50</MenuItem>
+                <MenuItem value="100">100</MenuItem>
             </Select>
         </FormControl>
         </div>

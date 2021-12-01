@@ -51,15 +51,15 @@ const Articles = () => {
     return(
         <div className="Articles">
             <Controls 
-            setSelectedPage={setSelectedPage}
-            setIsDefault={setIsDefault}
-            setSelectedOrder={setSelectedOrder}
-            setSelectedSortBy={setSelectedSortBy}
-            selectedSortBy={selectedSortBy}
-            setSelectedTitle={setSelectedTitle}
-            setSelectedLimit={setSelectedLimit}
-            setSelectedTopic={setSelectedTopic}
-            selectedTopic={selectedTopic}
+                setSelectedPage={setSelectedPage}
+                setIsDefault={setIsDefault}
+                setSelectedOrder={setSelectedOrder}
+                setSelectedSortBy={setSelectedSortBy}
+                selectedSortBy={selectedSortBy}
+                setSelectedTitle={setSelectedTitle}
+                setSelectedLimit={setSelectedLimit}
+                setSelectedTopic={setSelectedTopic}
+                selectedTopic={selectedTopic}
             />
 
             {isDefault ? <h3>Latest: </h3>: <h3>Results: </h3>}

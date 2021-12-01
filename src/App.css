@@ -160,13 +160,13 @@ a {
 }
 
 .PostComment{
+  margin: auto;
   display: grid;
-  max-width: auto;
+  width: 500px;
   padding: 10px;
 }
 
 .CreatePost{
-  max-width: 900px;
   margin: auto;
   align-items: center;
   justify-content: center;

@@ -39,8 +39,6 @@
 
 - [ ] Seems like most initial states are empty arrays even when you'll be storing other data types there?
 
-- [ ] The `Articles` component has many jobs. Could it be split into smaller components? For example, you could pull out the form part?
-
 
 
 

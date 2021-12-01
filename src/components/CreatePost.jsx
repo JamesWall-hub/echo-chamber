@@ -21,6 +21,7 @@ const CreatePost = () => {
     const [newTitle, setNewTitle] = useState([])
     const [newBody, setNewBody] = useState([])
     const [hasPosted, setHasPosted] = useState(false)
+    const [isError, setIsError] = useState(false)
     useEffect(() => {
       setIsLoadingTopics(true)
         getAllTopics()
@@ -50,12 +51,23 @@ const CreatePost = () => {
       postTopic({topic_slug: selectedTopic})
       .then(() => {
         postArticle({author: currUser.username, title: newTitle, topic: selectedTopic, body: newBody})
+      })
+      .then(()=>{
         setHasPosted(true)
+      })
+      .catch((err)=>{
+        setIsError(true)
       })
       :
       postArticle({author: currUser.username, title: newTitle, topic: selectedTopic, body: newBody})
-      setHasPosted(true)
-  }
+      .then(() => {
+        setHasPosted(true)
+      })
+      .catch((err)=>{
+        setIsError(true)
+      })
+    }
+    
     return(
       !!currUser ?
         hasPosted ? <p>Article posted!</p> :
@@ -80,11 +92,11 @@ const CreatePost = () => {
               </FormControl>
             </Box>}
             <p>Or</p>
-            <TextField label="Create a new topic" onChange={handleNewTopic}/>
-            <TextField label="Enter a title" onChange={handleNewTitle}/>
-            <TextField label="Your article here" onChange={handleNewBody}/>
+            <TextField required label="Create a new topic" onChange={handleNewTopic} helperText="New or existing topic required"/>
+            <TextField required label="Enter a title" onChange={handleNewTitle} helperText="Required"/>
+            <TextField required label="Your article here" onChange={handleNewBody}helperText="Required"/>
             <Button variant="outlined" onClick={handlePostArticle}>Post</Button>
-
+            {isError ? <p>Required fields must be filled.</p>:null}
             </div>
             :
             <div className="signInMessage">
