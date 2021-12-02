@@ -12,12 +12,7 @@
 - [ ] Refreshing doesn’t cause an issue on sub-pages (check on hosted version)
 - [ ] No errors in the console
 
-## Error Handling
-
-- [ ] Bad url
-- [ ] Bad article id in url
-- [ ] Post comment: No text in comment body
-- [ ] Post new article gives "article posted" with no details filled in
+## Error Handlings
 - [ ] Update user fails but gives positive feedback
 - [ ] Make sure _every_ network request has a `.catch` block which acts to indicate to the user when something has gone wrongs
 
@@ -34,8 +29,6 @@
 ## Code
 
 - [ ] `Home` and `Articles` have very similar functionality. Is there any way for them to be made a little more DRY?
-
-- [ ] `ArticleVoter` and `CommentVoter` are almost exactly the same. Could they be a single, generic component?
 
 - [ ] Seems like most initial states are empty arrays even when you'll be storing other data types there?
 

@@ -9,6 +9,7 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
     const [newBody, setNewBody] = useState([])
     const [isEditing, setIsEditing] = useState(false)
     const {article_id} = useParams()
+    const [isError, setIsError] = useState(false)
 
     const handleArticleBody = () => {
         setIsEditing(true)
@@ -25,6 +26,9 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
         setIsEditing(false)
         setCurrBody(newBody)
         patchArticle({article_id, newBody})
+        .catch(() => {
+            setIsError(true)
+        })
     }
     return (
         isEditing ?
@@ -36,6 +40,7 @@ export default function ArticleBody({author, currBody, setCurrBody, handleDelete
         <button onClick={handleCancel}>
         <img className="Icon" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-1/254000/45-1024.png" alt="cancel"/>
         </button>
+        {isError ? <p>Something went wrong</p>:null}
         </>
         
         :

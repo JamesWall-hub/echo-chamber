@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 export default function PostComment({setPostedComment}) {
+    const [isError, setIsError] = useState(false)
     const { article_id } = useParams()
     const [commentBody, setCommentBody] = useState("")
     const {currUser} = useContext(UserContext)
@@ -23,6 +24,9 @@ export default function PostComment({setPostedComment}) {
                 return [comment,...prev]
             })
         })
+        .catch(() => {
+            setIsError(true)
+        })
     }
     return (
     <div className="PostComment">
@@ -30,6 +34,7 @@ export default function PostComment({setPostedComment}) {
         <>
         <UserAndAvatar username={currUser.username}/>
         <TextField label="Post a comment" onChange={handleCommentBody}/>
+        {isError ? <p>*Comments must contain text</p>:null}
         <Button onClick={handlePostComment} variant="outlined">Comment</Button>
         </>
         : 

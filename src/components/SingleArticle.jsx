@@ -8,16 +8,24 @@ import { deleteArticle } from "../utils/api";
 import Voter from "./Voter"
 
 const SingleArticle = () => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [isError, setIsError] = useState(false)
     const [currentArticle, setCurrentArticle] = useState([])
     const { article_id } = useParams()
     const [currBody, setCurrBody] = useState("")
     const [isDeleted, setIsDeleted] = useState(false)
 
     useEffect(() => {
+        setIsLoading(true)
         getArticleById(article_id)
         .then((article) => {
             setCurrentArticle(article)
             setCurrBody(article.body)
+            setIsLoading(false)
+        })
+        .catch(() => {
+            setIsLoading(false)
+            setIsError(true)
         })
     }, [])
 
@@ -30,6 +38,8 @@ const SingleArticle = () => {
     const { topic, title, author, comment_count, created_at, votes} = currentArticle
 
     return(
+        isLoading ? <p>Loading...</p> :
+        isError ? <p>Article not found</p> :
         isDeleted ? <p>Article Deleted.</p> :
         <div>
         <div className="SingleArticle">

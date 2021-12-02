@@ -11,6 +11,7 @@ import Users from "./components/Users"
 import CreateUser from "./components/CreateUser"
 import CreatePost from "./components/CreatePost"
 import EditUser from "./components/EditUser"
+import PageNotFound from "./components/PageNotFound"
 
 const App = () => {
   const [currUser, setCurrUser] = useState()
@@ -28,6 +29,7 @@ const App = () => {
     <Route path="/edit_user" element={<EditUser/>}/>
     <Route path="/create_user" element={<CreateUser/>}/>
     <Route path="/create_post" element={<CreatePost/>}/>
+    <Route path="*" element={<PageNotFound/>}/>
     </Routes>
     </div>
     </UserContext.Provider>

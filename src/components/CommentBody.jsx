@@ -7,6 +7,7 @@ export default function CommentBody({author, currBody, setCurrBody, comment_id, 
     const {currUser} = useContext(UserContext)
     const [newBody, setNewBody] = useState([])
     const [isEditing, setIsEditing] = useState(false)
+    const [isError, setIsError] = useState(false)
 
     const handleCommentBody = () => {
         setIsEditing(true)
@@ -34,6 +35,7 @@ export default function CommentBody({author, currBody, setCurrBody, comment_id, 
         <button onClick={handleCancel}>
         <img className="Icon" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-round-1/254000/45-1024.png" alt="cancel"/>
         </button>
+        {isError ? <p>Something went wrong</p>:null}
         </>
         
         :

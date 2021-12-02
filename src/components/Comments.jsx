@@ -15,6 +15,7 @@ export default function Comments() {
     const [sortComments, setSortComments] = useState("created_at")
     const [commentLimit, setCommentLimit] = useState(10)
     const [postedComment, setPostedComment] = useState([])
+    const [isError, setIsError] = useState(false)
     const commentParams = {
         sort_by: sortComments,
         limit: commentLimit,
@@ -23,6 +24,9 @@ export default function Comments() {
         getCommentsByArticle(article_id, commentParams)
         .then((comments) => {
             setDislayedComments(comments)
+        })
+        .catch(() => {
+            setIsError(true)
         })
     }, [sortComments, commentLimit, commentParams])
 
@@ -38,6 +42,7 @@ export default function Comments() {
 
     return (
         <>
+        {isError ? <p>Failed to load comments</p>:null}
         <div className="PostComment">
         <PostComment setPostedComment={setPostedComment}/>
         </div>

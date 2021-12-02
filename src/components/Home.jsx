@@ -3,6 +3,7 @@ import {getPopularArticles} from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
 const Home = () => {
+    const [isError, setIsError] = useState(false)
     const [popularArticles, setPopularArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     useEffect(()=>{
@@ -12,11 +13,16 @@ const Home = () => {
             setIsLoading(false)
             setPopularArticles(articlesFromServer)
         })
+        .catch(()=> {
+            setIsLoading(false)
+            setIsError(true)
+        })
     }, [])
     return(
+        isLoading ? <p>Loading...</p> :
+        isError ? <p>Something went wrong!</p> :
         <div className="Home">
-            <h2>Most popular:</h2>
-            {isLoading ? <p>Loading...</p> : null}
+        <h2>Most popular:</h2>
             <ul className="ArticleList" style={{listStyleType: "none"}}>
             {popularArticles.map((article) => {
                 const {article_id, title, author, topic, votes, comment_count, created_at} = article

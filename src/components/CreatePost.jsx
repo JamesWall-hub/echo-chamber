@@ -96,16 +96,16 @@ const CreatePost = () => {
             <TextField required label="Enter a title" onChange={handleNewTitle} helperText="Required"/>
             <TextField required label="Your article here" onChange={handleNewBody}helperText="Required"/>
             <Button variant="outlined" onClick={handlePostArticle}>Post</Button>
-            {isError ? <p>Required fields must be filled.</p>:null}
+            {isError ? <p>*Required fields must be filled.</p>:null}
             </div>
             :
-            <div className="signInMessage">
+            <p>
             Please 
             <Link to="/users" style={{ textDecoration: 'none' }}> sign in </Link>
             or
             <Link to="/create_user" style={{ textDecoration: 'none' }}> create a user </Link>
             to post an article.
-            </div>
+            </p>
             );
         }
 

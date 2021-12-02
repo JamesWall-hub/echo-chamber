@@ -14,6 +14,7 @@ const Articles = () => {
     const [selectedTitle, setSelectedTitle] = useState([])
     const [selectedPage, setSelectedPage] = useState(1)
     const [selectedLimit, setSelectedLimit] = useState(10)
+    const [isError, setIsError] = useState(false)
 
     useEffect(()=>{
         const params = {
@@ -33,6 +34,10 @@ const Articles = () => {
             setIsLoading(false)
             setSelectedArticles(articlesFromServer)
         })
+        .catch(() => {
+            setIsError(true)
+            setIsLoading(false)
+        })
     }, [selectedOrder, selectedSortBy, selectedTopic, selectedTitle, selectedPage, selectedLimit])
 
 
@@ -49,6 +54,8 @@ const Articles = () => {
     };
 
     return(
+        isLoading ? <p>Loading...</p> :
+        isError ? <p>Something went wrong</p>:
         <div className="Articles">
             <Controls 
                 setSelectedPage={setSelectedPage}
@@ -63,8 +70,6 @@ const Articles = () => {
             />
 
             {isDefault ? <h3>Latest: </h3>: <h3>Results: </h3>}
-
-            {isLoading ? <p>Loading...</p> : null}
             <ul className="ArticleList" style={{listStyleType: "none"}}>
             {selectedArticles.map((article) => {
                 const {article_id, title, author, topic, votes, comment_count, created_at} = article

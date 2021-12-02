@@ -8,6 +8,7 @@ const Users = () => {
     const {setCurrUser, currUser} = useContext(UserContext)
     const [allUsers, setAllUsers] = useState([])
     const [isLoading, setIsLoading] = useState([])
+    const [isError, setIsError] = useState(false)
     useEffect(() => {
         setIsLoading(true)
         getAllUsers()

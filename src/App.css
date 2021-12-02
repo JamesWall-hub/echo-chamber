@@ -9,6 +9,10 @@
   'Main';
 }
 
+h1{
+  margin-left: 50px;
+}
+
 button{
   border:none;
   background-color: white;
@@ -48,6 +52,7 @@ a {
 }
 
 .Home{
+  padding: 20px;
   margin: auto;
   max-width: 900px;
   align-items: center;
@@ -55,6 +60,7 @@ a {
 }
 
 .Articles{
+  padding: 20px;
   margin: auto;
   max-width: 900px;
 }

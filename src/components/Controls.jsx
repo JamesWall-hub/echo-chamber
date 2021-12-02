@@ -23,6 +23,7 @@ export default function Controls({
     {
     const [isLoadingTopics, setIsLoadingTopics] = useState(false)
     const [allTopics, setAllTopics] = useState([])
+    const [isError, setIsError] = useState(false)
 
     useEffect(() => {
         setIsLoadingTopics(true)
@@ -30,6 +31,9 @@ export default function Controls({
         .then((topicsFromServer) => {
             setAllTopics(topicsFromServer)
             setIsLoadingTopics(false)
+        })
+        .catch(() => {
+            setIsError(true)
         })
     }, [])
 
@@ -70,6 +74,7 @@ export default function Controls({
 
 
         {isLoadingTopics ? <p>Loading topics...</p> :
+        isError ? <p>Failed to load topics</p> :
         <FormControl sx={{ m: 1, minWidth: 80 }}>
             <InputLabel>Topic</InputLabel>
                 <Select
