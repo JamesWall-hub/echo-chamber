@@ -1,17 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { voteArticle, voteComment} from '../utils/api'
 import { UserContext } from '../contexts/User'
 
 export default function Voter({id, votes, author, isArticle}) {
     const {currUser} = useContext(UserContext)
-    const [currVotes, setCurrVotes] = useState(0)
-    const [hasVoted, setHasVoted] = useState(false)
+    const [currVotes, setCurrVotes] = useState(votes)
+    // const [hasVoted, setHasVoted] = useState(false)
     
-    useEffect(() => {
-    setCurrVotes(votes)
-    }, [votes])
-
 
     const handleVoteUp = () => {
         setCurrVotes((prev) => {
