@@ -24,6 +24,9 @@ export default function CommentBody({author, currBody, setCurrBody, comment_id, 
         setIsEditing(false)
         setCurrBody(newBody)
         patchComment({comment_id, newBody})
+        .catch(() => {
+            setIsError(true)
+        })
     }
     return (
         isEditing ?
