@@ -10,7 +10,7 @@ const CommentCard = ({comment_id, author, body, votes, created_at}) => {
     const [isError, setIsError] = useState(false)
     useEffect(() => {
         setCurrBody(body)
-    }, [])
+    }, [body])
     const handleDeleteComment = () => {
         setIsDeleted(true)
         deleteComment({comment_id})
