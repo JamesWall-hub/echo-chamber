@@ -17,7 +17,6 @@ export default function Comments() {
     const [isError, setIsError] = useState(false)
 
     useEffect(()=>{
-        console.log("loop?")
         const commentParams = {
             sort_by: sortComments,
             limit: commentLimit,
