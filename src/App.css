@@ -168,7 +168,8 @@ a {
 .PostComment{
   margin: auto;
   display: grid;
-  width: 500px;
+  max-width: 900px;
+  min-width: 300px;
   padding: 10px;
 }
 

@@ -34,7 +34,7 @@ export default function PostComment({setDisplayedComments}) {
         {!!currUser ?
         <>
         <UserAndAvatar username={currUser.username}/>
-        <TextField label="Post a comment" onChange={handleCommentBody} value={commentBody}/>
+        <TextField required label="Post a comment" onChange={handleCommentBody} value={commentBody}/>
         {isError ? <p>*Comments must contain text</p>:null}
         <Button onClick={handlePostComment} variant="outlined">Comment</Button>
         </>

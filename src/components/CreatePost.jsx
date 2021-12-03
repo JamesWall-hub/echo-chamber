@@ -78,7 +78,7 @@ const CreatePost = () => {
               <FormControl fullWidth>
                 <InputLabel>Select an existing topic</InputLabel>
                 <Select
-                  value={selectedTopic}
+                  value=""
                   label="Topic"
                   onChange={handleChangeTopic}
                 >

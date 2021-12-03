@@ -10,6 +10,7 @@ export default function CreateUser() {
     const [newUsername, setNewUsername] = useState()
     const [newName, setNewName] = useState()
     const [newAvatarURL, setNewAvatarURL] = useState()
+    const [isError, setIsError] = useState(false)
 
 
     const handlePostUser = (event) => {
@@ -17,6 +18,9 @@ export default function CreateUser() {
         postNewUser(newUsername, newName, newAvatarURL)
         .then((user)=>{
             setCurrUser(user)
+        })
+        .catch(() => {
+            setIsError(true)
         })
     }
 
@@ -40,6 +44,7 @@ export default function CreateUser() {
         <TextField required label="Enter a username" onChange={handleNewUsername} helperText="Required"/>
         <TextField label="Enter a name" onChange={handleNewName}/>
         <TextField label="Avatar URL" onChange={handleNewAvatarURL}/>
+        {isError ? <p>Required fields must be filled.</p>:null}
         <p>
         <Button variant="outlined"onClick={handlePostUser}>Create user</Button>
         </p>

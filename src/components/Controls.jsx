@@ -82,7 +82,6 @@ export default function Controls({
                     onChange={handleChangeTopic}
                     autoWidth
                 >
-                    <MenuItem value="" disabled>Topic</MenuItem>
             {allTopics.map((topic) => {
                 return(
                     <MenuItem key={topic.slug} value={topic.slug}>{topic.slug}</MenuItem>

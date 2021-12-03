@@ -39,8 +39,8 @@ const SingleArticle = () => {
 
     return(
         isLoading ? <p>Loading...</p> :
-        isError ? <p>Article not found</p> :
-        isDeleted ? <p>Article Deleted.</p> :
+        isError ? <p>Article not found.</p> :
+        isDeleted ? <p>Article deleted.</p> :
         <div>
         <div className="SingleArticle">
         <p>/{topic}</p>

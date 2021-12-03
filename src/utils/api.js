@@ -112,11 +112,10 @@ export const deleteArticle = ({article_id}) => {
 }
 
 //not working 404
-export const patchUser = ({username, newUsername, newName, newAvatarURL }) => {
-  console.log(username, newUsername, newName, newAvatarURL)
+export const patchUser = ({username, newName, newAvatarURL }) => {
+  console.log(username, newName, newAvatarURL)
   return myApi.patch(`/users/${username}`, {
     username: username,
-    new_username: newUsername,
     name: newName, 
     avatar_url: newAvatarURL
 

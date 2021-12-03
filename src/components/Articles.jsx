@@ -11,7 +11,7 @@ const Articles = () => {
     const [selectedTopic, setSelectedTopic] = useState("");
     const [selectedOrder, setSelectedOrder] = useState("desc");
     const [selectedSortBy, setSelectedSortBy] = useState("created_at");
-    const [selectedTitle, setSelectedTitle] = useState("")
+    const [selectedTitle, setSelectedTitle] = useState()
     const [selectedPage, setSelectedPage] = useState(1)
     const [selectedLimit, setSelectedLimit] = useState(10)
     const [isError, setIsError] = useState(false)
@@ -54,14 +54,13 @@ const Articles = () => {
     };
 
     return(
-        isLoading ? <p>Loading...</p> :
-        isError ? <p>Something went wrong</p>:
-        <div className="Articles">
-            {/* pass states through */}
-            <Controls 
+        <div className="ArticlesAndControls">
+        <Controls 
                 setSelectedPage={setSelectedPage}
+                selectedPage={selectedPage}
                 setIsDefault={setIsDefault}
                 setSelectedOrder={setSelectedOrder}
+                selectedOrder={selectedOrder}
                 setSelectedSortBy={setSelectedSortBy}
                 selectedSortBy={selectedSortBy}
                 setSelectedTitle={setSelectedTitle}
@@ -70,8 +69,11 @@ const Articles = () => {
                 setSelectedTopic={setSelectedTopic}
                 selectedTopic={selectedTopic}
             />
-
-            {isDefault ? <h3>Latest: </h3>: <h3>Results: </h3>}
+        <div className="Articles">
+           
+            {isLoading ? <p>Loading...</p> :
+            isError ? <p>Something went wrong</p>:
+            isDefault ? <h3>Latest: </h3>: <h3>Results: </h3>}
             <ul className="ArticleList" style={{listStyleType: "none"}}>
             {selectedArticles.map((article) => {
                 const {article_id, title, author, topic, votes, comment_count, created_at} = article
@@ -110,6 +112,7 @@ const Articles = () => {
                 <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
                 </> 
                 : null}
+        </div>
         </div>
     )
 }

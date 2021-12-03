@@ -11,6 +11,7 @@ import Select from '@mui/material/Select';
 
 export default function Comments() {
     const {article_id} = useParams()
+    const [isLoading, setIsLoading] = useState(false)
     const [displayedComments, setDisplayedComments] = useState([])
     const [sortComments, setSortComments] = useState("created_at")
     const [commentLimit, setCommentLimit] = useState(10)
@@ -21,9 +22,11 @@ export default function Comments() {
             sort_by: sortComments,
             limit: commentLimit,
         }
+        setIsLoading(true)
         getCommentsByArticle(article_id, commentParams)
         .then((comments) => {
             setDisplayedComments(comments)
+            setIsLoading(false)
         })
         .catch(() => {
             setIsError(true)
@@ -41,8 +44,9 @@ export default function Comments() {
     }
 
     return (
-        <>
-        {isError ? <p>Failed to load comments</p>:null}
+        isLoading ? <p>Loading comments...</p> :
+        isError ? <p>Failed to load comments</p> :
+        <div>
         <div className="PostComment">
         <PostComment setDisplayedComments={setDisplayedComments}/>
         </div>
@@ -83,6 +87,6 @@ export default function Comments() {
         :   null
         }
         </div>
-        </>
+        </div>
     )
 }
