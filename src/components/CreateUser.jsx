@@ -7,9 +7,9 @@ import Button from '@mui/material/Button';
 
 export default function CreateUser() {
     const {currUser, setCurrUser} = useContext(UserContext)
-    const [newUsername, setNewUsername] = useState([])
-    const [newName, setNewName] = useState([])
-    const [newAvatarURL, setNewAvatarURL] = useState([])
+    const [newUsername, setNewUsername] = useState()
+    const [newName, setNewName] = useState()
+    const [newAvatarURL, setNewAvatarURL] = useState()
 
 
     const handlePostUser = (event) => {

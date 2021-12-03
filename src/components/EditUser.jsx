@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 export default function EditUser() {
+    const [isError, setIsError] = useState(false)
     const {currUser, setCurrUser} = useContext(UserContext)
     const [hasPatched, setHasPatched] = useState(false)
     const [newUsername, setNewUsername] = useState([])
@@ -15,10 +16,14 @@ export default function EditUser() {
 
 
     useEffect(() => {
+        if(!!currUser){
         setNewUsername(currUser.username)
         setNewName(currUser.name)
         setNewAvatarURL(currUser.avatar_url)
-    }, [])
+        } else {
+        setIsError(true)
+        }
+    }, [currUser])
 
 
     const handlePatchUser = (event) => {
@@ -26,8 +31,11 @@ export default function EditUser() {
         const username = currUser.username
         patchUser({username, newUsername, newName, newAvatarURL})
         .then((user)=>{
-            setHasPatched(true)
             setCurrUser(user)
+            setHasPatched(true)
+        })
+        .catch(() => {
+            setIsError(true)
         })
     }
 
@@ -44,10 +52,10 @@ export default function EditUser() {
     }
     return (
         !!currUser ?
+        isError ? <p>Something went wrong</p> :
         hasPatched ?
         <p>Thanks, {newUsername} has been updated!</p>
         :
-        <>
         <div className="EditUser">
         
         <TextField label="Enter a new username" value={newUsername} onChange={handleNewUsername}/>
@@ -57,7 +65,6 @@ export default function EditUser() {
             <Button variant="outlined"onClick={handlePatchUser}>Edit user</Button>
         </p>
         </div>
-        </>
         :
         <div className="signInMessage">
         Please 
