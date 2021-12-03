@@ -16,16 +16,20 @@ const Users = () => {
             setIsLoading(false)
             setAllUsers(users)
         })
+        .catch(() => {
+            setIsError(true)
+        })
     }, [])
     return (
         isLoading ? <p>Loading...</p> :
+        isError ? <p>Something went wrong</p> :
         !!currUser ? <p>You are now signed in as {currUser.username}!</p>
         :
         <div className="Users">
         {allUsers.map((singleUser) => {
             return(
-                <div className="UserCard">
-                <UserAndAvatar variant="outlined" key={singleUser.username} username={singleUser.username}/>
+                <div className="UserCard" key={singleUser.username}>
+                <UserAndAvatar variant="outlined" username={singleUser.username}/>
                 <Button variant="outlined" onClick={() => {
                     setCurrUser(singleUser)
                 }}>Sign in as {singleUser.username}</Button>

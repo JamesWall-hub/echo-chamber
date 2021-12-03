@@ -7,7 +7,7 @@ import UserAndAvatar from "./UserAndAvatar"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-export default function PostComment({setPostedComment}) {
+export default function PostComment({setDisplayedComments}) {
     const [isError, setIsError] = useState(false)
     const { article_id } = useParams()
     const [commentBody, setCommentBody] = useState("")
@@ -18,9 +18,10 @@ export default function PostComment({setPostedComment}) {
     }
     const handlePostComment = (event) => {
         event.preventDefault()
-        postNewComment(article_id, currUser[0], commentBody)
+        postNewComment(article_id, currUser.username, commentBody)
         .then((comment) => {
-            setPostedComment((prev) => {
+            setDisplayedComments((prev) => {
+                setCommentBody("")
                 return [comment,...prev]
             })
         })
@@ -33,7 +34,7 @@ export default function PostComment({setPostedComment}) {
         {!!currUser ?
         <>
         <UserAndAvatar username={currUser.username}/>
-        <TextField label="Post a comment" onChange={handleCommentBody}/>
+        <TextField label="Post a comment" onChange={handleCommentBody} value={commentBody}/>
         {isError ? <p>*Comments must contain text</p>:null}
         <Button onClick={handlePostComment} variant="outlined">Comment</Button>
         </>

@@ -8,17 +8,17 @@ export default function UserAndAvatar(username) {
     useEffect(() => {
         getUserById(username)
         .then((user) => {
-            setThisUser([user.username, user.avatar_url])
+            setThisUser(user)
         })
         .catch(()=>{
             setIsError(true)
         })
-    }, [])
+    }, [username])
     return (
         isError ? <p>Something went wrong</p>:
         <div className="UserAndAvatar">
-            <img alt={thisUser[1]}src={thisUser[1]}></img>
-            <p>{thisUser[0]}</p>
+            <img alt={thisUser.username}src={thisUser.avatar_url}></img>
+            <p>{thisUser.username}</p>
         </div>
     )
 }

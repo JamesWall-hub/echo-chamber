@@ -12,11 +12,27 @@
 - [ ] Refreshing doesn’t cause an issue on sub-pages (check on hosted version)
 - [ ] No errors in the console
 
+
+
+
+
+
 ## Error Handlings
 - [ ] Update user fails but gives positive feedback
-- [ ] Make sure _every_ network request has a `.catch` block which acts to indicate to the user when something has gone wrongs
 
-## Functionality
+//b-e
+I may have handled the 400 wrong in backend, for some reason I can update a custom user but can't update mr.men.
+Used 404 to reject relation not found in table, I think I need to change error handling in back-end.
+currently no not null constraints on user table other than username?
+should i reject null in model?
+
+
+
+
+
+
+
+
 
 ### Articles
 

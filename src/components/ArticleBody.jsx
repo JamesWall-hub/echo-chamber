@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 
 export default function ArticleBody({author, currBody, setCurrBody, handleDeleteArticle}) {
     const {currUser} = useContext(UserContext)
-    const [newBody, setNewBody] = useState([])
+    const [newBody, setNewBody] = useState()
     const [isEditing, setIsEditing] = useState(false)
     const {article_id} = useParams()
     const [isError, setIsError] = useState(false)
