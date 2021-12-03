@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect, useState } from "react"
 import {getAllTopics} from "../utils/api";
 import InputLabel from '@mui/material/InputLabel';
@@ -83,9 +82,10 @@ export default function Controls({
                     onChange={handleChangeTopic}
                     autoWidth
                 >
+                    <MenuItem value="" disabled>Topic</MenuItem>
             {allTopics.map((topic) => {
                 return(
-                    <MenuItem value={topic.slug}>{topic.slug}</MenuItem>
+                    <MenuItem key={topic.slug} value={topic.slug}>{topic.slug}</MenuItem>
                 )
             })}
               

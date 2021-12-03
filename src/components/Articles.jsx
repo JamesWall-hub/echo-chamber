@@ -8,10 +8,10 @@ const Articles = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [isDefault, setIsDefault] = useState(true)
     const [selectedArticles, setSelectedArticles] = useState([])
-    const [selectedTopic, setSelectedTopic] = useState([]);
+    const [selectedTopic, setSelectedTopic] = useState("");
     const [selectedOrder, setSelectedOrder] = useState("desc");
     const [selectedSortBy, setSelectedSortBy] = useState("created_at");
-    const [selectedTitle, setSelectedTitle] = useState([])
+    const [selectedTitle, setSelectedTitle] = useState("")
     const [selectedPage, setSelectedPage] = useState(1)
     const [selectedLimit, setSelectedLimit] = useState(10)
     const [isError, setIsError] = useState(false)
@@ -57,6 +57,7 @@ const Articles = () => {
         isLoading ? <p>Loading...</p> :
         isError ? <p>Something went wrong</p>:
         <div className="Articles">
+            {/* pass states through */}
             <Controls 
                 setSelectedPage={setSelectedPage}
                 setIsDefault={setIsDefault}
@@ -65,6 +66,7 @@ const Articles = () => {
                 selectedSortBy={selectedSortBy}
                 setSelectedTitle={setSelectedTitle}
                 setSelectedLimit={setSelectedLimit}
+                selectedLimit={selectedLimit}
                 setSelectedTopic={setSelectedTopic}
                 selectedTopic={selectedTopic}
             />
