@@ -7,6 +7,7 @@ const Title = () => {
     const {currUser, setCurrUser} = useContext(UserContext)
     const handleSignOut = () => {
         setCurrUser()
+        localStorage.clear()
     }
     
     return(

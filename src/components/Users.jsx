@@ -32,7 +32,12 @@ const Users = () => {
                 <UserAndAvatar variant="outlined" username={singleUser.username}/>
                 <Button variant="outlined" onClick={() => {
                     setCurrUser(singleUser)
-                }}>Sign in as {singleUser.username}</Button>
+                    console.log(singleUser)
+                    localStorage.setItem("user", JSON.stringify(singleUser))
+                }}
+                >
+                Sign in as {singleUser.username}
+                </Button>
                 </div>
             )
         })}

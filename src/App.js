@@ -1,5 +1,5 @@
 import "./App.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { UserContext } from "./contexts/User"
 import Title from "./components/Title"
@@ -15,6 +15,13 @@ import PageNotFound from "./components/PageNotFound"
 
 const App = () => {
   const [currUser, setCurrUser] = useState()
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setCurrUser(foundUser);
+    }
+  }, []);
   return (
     <BrowserRouter>
     <UserContext.Provider value={{currUser, setCurrUser}}>
