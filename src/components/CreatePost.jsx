@@ -84,7 +84,7 @@ const CreatePost = () => {
                 >
                 {allTopics.map((topic) => {
                     return(
-                        <MenuItem value={topic.slug}>{topic.slug}</MenuItem>
+                        <MenuItem key={topic.slug} value={topic.slug}>{topic.slug}</MenuItem>
                     )
                 })}
                   
