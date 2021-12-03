@@ -18,6 +18,7 @@ export default function PostComment({setDisplayedComments}) {
     }
     const handlePostComment = (event) => {
         event.preventDefault()
+        commentBody.length === 0 ? setIsError(true):
         postNewComment(article_id, currUser.username, commentBody)
         .then((comment) => {
             setDisplayedComments((prev) => {

@@ -92,7 +92,7 @@ const CreatePost = () => {
               </FormControl>
             </Box>}
             <p>Or</p>
-            <TextField required label="Create a new topic" onChange={handleNewTopic} helperText="New or existing topic required"/>
+            <TextField label="Create a new topic" onChange={handleNewTopic} helperText="New or existing topic required"/>
             <TextField required label="Enter a title" onChange={handleNewTitle} helperText="Required"/>
             <TextField required label="Your article here" onChange={handleNewBody}helperText="Required"/>
             <Button variant="outlined" onClick={handlePostArticle}>Post</Button>
