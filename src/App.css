@@ -40,6 +40,7 @@ body {
 
 .LogoAndTitle{
   display: flex;
+  align-items: center;
   margin: auto;  
 }
 
@@ -131,6 +132,7 @@ a {
   max-width: 500px;
 }
 .CommentList{
+  margin: auto;
   align-items: center;
   padding: 15px;
 }
@@ -144,6 +146,18 @@ a {
   flex-wrap:wrap;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.PageButtons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LoadMore{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .SingleArticle{

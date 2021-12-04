@@ -94,6 +94,8 @@ const Articles = () => {
             </ul>
             {/* review conditional button rendering */}
 
+            <div className="PageButtons">
+
             {selectedPage === 1 && selectedArticles.length === selectedLimit ? 
                 <>
                 <Button variant="outlined" onClick={handleNextPage}>Next Page</Button>
@@ -112,6 +114,7 @@ const Articles = () => {
                 <Button variant="outlined" onClick={handlePrevPage}>Previous Page</Button>
                 </> 
                 : null}
+            </div>
         </div>
         </div>
     )

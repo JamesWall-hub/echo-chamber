@@ -8,6 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 
 export default function Comments() {
     const {article_id} = useParams()
@@ -82,10 +83,12 @@ export default function Comments() {
                 )
             })}
         </ul>
+        <div className="LoadMore">
         {displayedComments.length % 10 === 0 ?
-            <button onClick={handleMoreComments}>Load more</button>
+            <Button variant="outlined" onClick={handleMoreComments}>Load more</Button>
         :   null
         }
+        </div>
         </div>
         </div>
     )
