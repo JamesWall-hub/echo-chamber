@@ -63,7 +63,7 @@ a {
 
 .Home{
   padding: 20px;
-  margin: auto;
+
   max-width: 900px;
   grid-area: Main;
 }
@@ -196,6 +196,7 @@ a {
 }
 
 .CreatePost{
+  min-width: 300px;
   margin: auto;
   align-items: center;
   justify-content: center;
@@ -208,7 +209,6 @@ a {
   align-items: center;
   width: 250px;
   box-shadow: darkgray 10px 5px 10px;
-  margin: 5px;
 }
 
 .Users{
