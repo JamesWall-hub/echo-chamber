@@ -10,7 +10,7 @@
 }
 
 h1{
-  margin-left: 80px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 button{
@@ -36,6 +36,15 @@ body {
   grid-template-areas: "title user";
   text-align: center;
   color: #0077b6;
+}
+
+.LogoAndTitle{
+  display: flex;
+  margin: auto;  
+}
+
+.Bat{
+  width: 100px;
 }
 
 a {

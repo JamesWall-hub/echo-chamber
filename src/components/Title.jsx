@@ -13,7 +13,10 @@ const Title = () => {
     return(
         <>
         <div className="Title">
-            <h1>Echo Chamber</h1>
+            <div className="LogoAndTitle">
+                <img className="Bat" alt="BlueBat" src="https://creazilla-store.fra1.digitaloceanspaces.com/silhouettes/2910/bat-silhouette-4bb7ee-md.png"/>
+                <h1>Echo Chamber</h1>
+            </div>
         <div className="UserTitle">
         {!!currUser ?
         <>
