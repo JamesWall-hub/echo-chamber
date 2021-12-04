@@ -6,6 +6,8 @@ Hi! Welcome to my Echo Chamber React project!
 
 ## The hosted version of this app can be found at https://jw-echo-chamber.netlify.app/
 
+## The hosted version of the backe-end can be found at https://be-echo-chamber.herokuapp.com/api/
+
 ## Project summary
 
 This project is inspired by the popular discussion site Reddit, and is built using React as a front-end framework snd styled with some MUI componenets.
