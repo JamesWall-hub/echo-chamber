@@ -6,20 +6,63 @@ import { UserContext } from '../contexts/User'
 export default function Voter({id, votes, author, isArticle}) {
     const {currUser} = useContext(UserContext)
     const [currVotes, setCurrVotes] = useState(votes)
-    // const [hasVoted, setHasVoted] = useState(false)
+    const [hasVoted, setHasVoted] = useState(false)
+    const [isError, setIsError] = useState(false)
     
 
     const handleVoteUp = () => {
-        setCurrVotes((prev) => {
-            return prev+1
-        })
-        isArticle ? voteArticle(id, 1) : voteComment(id, 1)   
+        if(!hasVoted){
+            setCurrVotes((prev) => {
+                return prev+1
+            })
+            if(isArticle){
+                voteArticle(id, 1)
+                .then(() => {
+                    setHasVoted(true)
+                }) 
+                .catch(() => {
+                    setIsError(true)
+                })  
+            } else {
+                voteComment(id, 1)
+                .then(() => {
+                    setHasVoted(true)
+                }) 
+                .catch(() => {  
+                setIsError(true)
+                })
+            }
+        } else {
+            return
+        }
     }
+
+
     const handleVoteDown = () => {
-        setCurrVotes((prev) => {
-            return prev-1
-        })
-        isArticle ? voteArticle(id, -1) : voteComment(id, -1)
+        if(!hasVoted){
+            setCurrVotes((prev) => {
+                return prev-1
+            })
+            if(isArticle){
+                voteArticle(id, -1)
+                .then(() => {
+                    setHasVoted(true)
+                }) 
+                .catch(() => {
+                    setIsError(true)
+                })  
+            } else {
+                voteComment(id, -1)
+                .then(() => {
+                    setHasVoted(true)
+                }) 
+                .catch(() => {  
+                setIsError(true)
+                })
+            }
+        } else {
+            return
+        }
     }
 
     
@@ -45,6 +88,7 @@ export default function Voter({id, votes, author, isArticle}) {
         or
         <Link to="/create_user" style={{ textDecoration: 'none' }}> create a user </Link>
         to vote.
+        {isError ? <p>Something went wron.</p>:null}
         </div>
     )
 }
