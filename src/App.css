@@ -63,7 +63,7 @@ a {
 
 .Home{
   padding: 20px;
-
+  margin: auto;
   max-width: 900px;
   grid-area: Main;
 }

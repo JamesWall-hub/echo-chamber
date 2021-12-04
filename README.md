@@ -25,7 +25,7 @@ You will need to have the following packages installed to download and work with
 - Node.js v16.8.0 - Install instructions [Here](https://nodejs.dev/learn/how-to-install-nodejs)
 - A code editor such as [VSCode](https://code.visualstudio.com/)
 
-## Cloning and testing this project
+## Cloning and running this project
 
 1. To get started, navigate to the directory of your choice and run this shell command in your terminal:
 
